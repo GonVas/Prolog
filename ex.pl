@@ -1,8 +1,14 @@
 at(Elem,0,[Elem|_]).
 at(Elem,Index,[_|Tail]) :-
-	Index1 is Index-1,
-	Index>0,
+	Index1 is Index - 1,
+	Index > 0,
 	at(Elem,Index1,Tail).
+
+find(Elem, Start, Start1, [Elem|_]) :-
+	Start1 = Start.
+find(ElemToFind, Start, End, [Head|Tail]) :-
+	Index1 is Start+1,
+	find(ElemToFind, Index1, End, Tail).
 
 replace(New,0,[_|OldList],[New|OldList]).
 replace(New,Index,[Head|OldList],[Head|NewList]):-
@@ -29,8 +35,8 @@ createTables([H|T], N, M) :-
 
 
 drawSeatsTop(L) :-
-	at(Token,3,L), write(Token).
-
+	at(Token,3,L),
+	write(Token).
 
 drawSeatsTopMiddle(L) :-
 	at(Token1,4,L), write(Token1),
@@ -90,47 +96,44 @@ space(I,M):-
   N1 is I+1,
   space(N1,M).
 
-serveTea(Board, T, S, NewBoard).
+moveWaiter(Board, Table, Seat, NewBoard) :-
+	at(Elem, Table, Board),
+	replace('W', Seat, Elem, NewElem),
+	replace(NewElem, Table, Board, NewBoard).
 
-moveWaiter(Board, T, S).
+
+eraseWaiter(Elem, Table, Seat, Board, NewBoard) :-
+	at(Element, Table, List),
+
 
 activateAction(Board, T, P).
 
-play(jogador2, Table, Seat) :-
+play(Table, Seat) :-
 	get_code(Table1),
 	Table is Table1 - 48,
-	get_code(Space),
+	get_code(Enter),
 	get_code(Seat1),
+	get_code(Enter1),
 	Seat is Seat1 - 48.
 
-
-play(jogador1, Table, Seat) :-
-	get_code(Table1),
-	Table is Table1-48,
-	get_code(Space),
-	get_code(Seat1),
-	Seat is Seat1-48.
-
-serveTea(Board, Table, Seat, j1, NewBoard) :-
+serveTea(Board, Table, Seat, Player, NewBoard) :-
 	at(Elem, Table, Board),
-	replace('G', Seat, Elem, NewElem),
-	replace(NewElem, Table, Board, NewBoard).
+	replace(Player, Seat, Elem, NewElem),
+	replace(NewElem, Table, Board, NewBoard1),
+	moveWaiter(NewBoard1, Seat, Seat, NewBoard).
 
-serveTea(Board, Table, Seat, j2, NewBoard) :-
-	at(Elem, Table, Board),
-	replace('B', Seat, Elem, NewElem),
-	replace(NewElem, Table, Board, NewBoard).
-
-
-gameloop(Mer, Board) :-
-	drawBoard(Board),
-	play(jogador1, Table, Seat),
-	serveTea(Board, Table, Seat, j1, NewBoard),
+gameLoop(1, Board).
+gameLoop(End, Board) :-
 	drawBoard(NewBoard),
+	play(Table1, Seat1),
+	serveTea(NewBoard, Table1, Seat1, 'G', NewBoard1),
+	drawBoard(NewBoard1),
+	play(Table2, Seat2),
+	serveTea(NewBoard1, Table2, Seat2, 'B' , NewBoard2),
+	gameLoop(End, NewBoard2).
 
-start(L) :-
+start :-
 	createTables(Board,0,9),
-	drawBoard(Board),
-	play(jogador1, Table, Seat),
-	serveTea(Board, Table, Seat, j1,	 NewBoard),
-	drawBoard(NewBoard).
+	moveWaiter(Board, 0, 0, NewBoard),
+	drawBoard(NewBoard),
+	gameLoop(0, NewBoard).
