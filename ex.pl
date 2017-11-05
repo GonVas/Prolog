@@ -4,6 +4,8 @@ at(Elem,Index,[_|Tail]) :-
 	Index > 0,
 	at(Elem,Index1,Tail).
 
+find(Elem, Start, Start1, []).
+	Start1 = -1,
 find(Elem, Start, Start1, [Elem|_]) :-
 	Start1 = Start.
 find(ElemToFind, Start, End, [Head|Tail]) :-
@@ -102,10 +104,6 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 	replace(NewElem, Table, Board, NewBoard).
 
 
-eraseWaiter(Elem, Table, Seat, Board, NewBoard) :-
-	at(Element, Table, List),
-
-
 activateAction(Board, T, P).
 
 play(Table, Seat) :-
@@ -122,14 +120,22 @@ serveTea(Board, Table, Seat, Player, NewBoard) :-
 	replace(NewElem, Table, Board, NewBoard1),
 	moveWaiter(NewBoard1, Seat, Seat, NewBoard).
 
+eraseWaiter(Board, Index, NewBoard) :-
+	at(Elem, Index, Board),
+	find('W', 0, I, Elem),
+	Index1 is Index+1,
+	write(I),
+	eraseWaiter(Board, Index1, NewBoard).
+
 gameLoop(1, Board).
 gameLoop(End, Board) :-
-	drawBoard(NewBoard),
 	play(Table1, Seat1),
-	serveTea(NewBoard, Table1, Seat1, 'G', NewBoard1),
+	serveTea(Board, Table1, Seat1, 'G', NewBoard1),
+	eraseWaiter(NewBoard1, 0, NewBoard3),
 	drawBoard(NewBoard1),
 	play(Table2, Seat2),
 	serveTea(NewBoard1, Table2, Seat2, 'B' , NewBoard2),
+	drawBoard(NewBoard2),
 	gameLoop(End, NewBoard2).
 
 start :-
