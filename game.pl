@@ -4,8 +4,8 @@ at(Elem,Index,[_|Tail]) :-
 	Index > 0,
 	at(Elem,Index1,Tail).
 
-find(Elem, Start, Start1, []).
-	Start1 = -1,
+find(Elem, Start, Start1, []) :-
+	Start1 = -1.
 find(Elem, Start, Start1, [Elem|_]) :-
 	Start1 = Start.
 find(ElemToFind, Start, End, [Head|Tail]) :-
@@ -23,7 +23,7 @@ createSeats([], M, M). 		%Stop if 2nd args = 3rd arg meaning max elems reached
 createSeats([H|T], N, M) :-
 	N < M, 									%add elements until max elements is reached
 	N1 is N+1, 							%keep track of added element
-	H = 'O', 								%element to add
+	H = '.', 								%element to add
 	createSeats(T,N1,M).  	%recursive call
 
 
@@ -114,29 +114,44 @@ play(Table, Seat) :-
 	get_code(Enter1),
 	Seat is Seat1 - 48.
 
-serveTea(Board, Table, Seat, Player, NewBoard) :-
+serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
-	replace(Player, Seat, Elem, NewElem),
+	replace(TeaToken, Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard1),
 	moveWaiter(NewBoard1, Seat, Seat, NewBoard).
 
-eraseWaiter(Board, Index, NewBoard) :-
-	at(Elem, Index, Board),
-	find('W', 0, I, Elem),
-	Index1 is Index+1,
-	write(I),
-	eraseWaiter(Board, Index1, NewBoard).
+eraseWaiter(_, -1, -1, _).
+eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
+	Index >= 0,
+	WaiterIndex >= 0,
+	Index1 is Index-1,
 
-gameLoop(1, Board).
+	at(Elem, Index1, Board),
+	replace('.', WaiterIndex, Elem, NewElem),
+	replace(NewElem, Index1, Board, NewBoard),
+	eraseWaiter(-1,-1,-1,-1). %Return
+
+eraseWaiter(Board, Index, -1, NewBoard) :-
+	at(Elem, Index, Board),
+	find('W', 0, WaiterIndex, Elem),
+	write(Elem),
+	nl,
+	write(WaiterIndex),
+	nl,
+	Index1 is Index+1,
+	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
+
+turn(TeaToken, Board, NewBoard) :-
+	play(Table, Seat),
+	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
+	eraseWaiter(NewBoard1, 0, -1, NewBoard),
+	drawBoard(NewBoard).
+
+gameLoop(1, _ ).
 gameLoop(End, Board) :-
-	play(Table1, Seat1),
-	serveTea(Board, Table1, Seat1, 'G', NewBoard1),
-	eraseWaiter(NewBoard1, 0, NewBoard3),
-	drawBoard(NewBoard1),
-	play(Table2, Seat2),
-	serveTea(NewBoard1, Table2, Seat2, 'B' , NewBoard2),
-	drawBoard(NewBoard2),
-	gameLoop(End, NewBoard2).
+	turn('X', Board, NewBoard),
+	turn('O', NewBoard, NewBoard1),
+	gameLoop(End, NewBoard1).
 
 start :-
 	createTables(Board,0,9),
