@@ -35,7 +35,6 @@ createTables([H|T], N, M) :-
 	createSeats(H,0,M),  		%add an empty list
 	createTables(T, N1, M). %recursive call
 
-
 drawSeatsTop(L) :-
 	at(Token,3,L),
 	write(Token).
@@ -117,8 +116,7 @@ play(Table, Seat) :-
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
 	replace(TeaToken, Seat, Elem, NewElem),
-	replace(NewElem, Table, Board, NewBoard1),
-	moveWaiter(NewBoard1, Seat, Seat, NewBoard).
+	replace(NewElem, Table, Board, NewBoard).
 
 eraseWaiter(_, -1, -1, _).
 eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
@@ -144,7 +142,8 @@ eraseWaiter(Board, Index, -1, NewBoard) :-
 turn(TeaToken, Board, NewBoard) :-
 	play(Table, Seat),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	eraseWaiter(NewBoard1, 0, -1, NewBoard),
+	eraseWaiter(NewBoard1, 0, -1, NewBoard2),
+	moveWaiter(NewBoard2, Seat, Seat, NewBoard),
 	drawBoard(NewBoard).
 
 gameLoop(1, _ ).
