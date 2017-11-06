@@ -4,6 +4,11 @@ at(Elem,Index,[_|Tail]) :-
 	Index > 0,
 	at(Elem,Index1,Tail).
 
+assignValue(V1, V1).
+assignValue(V1, V2) :-
+	V1 /= V2,
+	assignValue(V1, V1).
+
 find(Elem, Start, Start1, []) :-
 	Start1 = -1.
 find(Elem, Start, Start1, [Elem|_]) :-
@@ -102,16 +107,12 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 	replace('W', Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-
 activateAction(Board, T, P).
 
-play(Table, Seat) :-
-	get_code(Table1),
-	Table is Table1 - 48,
-	get_code(Enter),
+play(Seat) :-
 	get_code(Seat1),
-	get_code(Enter1),
-	Seat is Seat1 - 48.
+	Seat is Seat1 - 48,
+	get_code(Enter).
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
@@ -132,28 +133,29 @@ eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
 eraseWaiter(Board, Index, -1, NewBoard) :-
 	at(Elem, Index, Board),
 	find('W', 0, WaiterIndex, Elem),
-	write(Elem),
-	nl,
-	write(WaiterIndex),
-	nl,
 	Index1 is Index+1,
 	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
 
-turn(TeaToken, Board, NewBoard) :-
-	play(Table, Seat),
+turn(TeaToken, Table, Board, NewBoard, NewTable) :-
+	play(Seat),
+	write(Seat),
+	nl,
+	write(Table),
+	nl,
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
 	eraseWaiter(NewBoard1, 0, -1, NewBoard2),
 	moveWaiter(NewBoard2, Seat, Seat, NewBoard),
+	assignValue(Seat, NewTable),
 	drawBoard(NewBoard).
 
-gameLoop(1, _ ).
-gameLoop(End, Board) :-
-	turn('X', Board, NewBoard),
-	turn('O', NewBoard, NewBoard1),
-	gameLoop(End, NewBoard1).
+gameLoop(1, _).
+gameLoop(End, Table, Board) :-
+	turn('X', Table, Board, NewBoard, NewTable),
+	turn('O', NewTable, NewBoard, NewBoard1, NewTable1),
+	gameLoop(End, NewTable1, NewBoard1).
 
 start :-
 	createTables(Board,0,9),
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
-	gameLoop(0, NewBoard).
+	gameLoop(0, 0, NewBoard).
