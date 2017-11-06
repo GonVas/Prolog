@@ -109,10 +109,18 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 
 activateAction(Board, T, P).
 
-play(Seat) :-
+% TODO change this fkin repeat
+play(Table, Seat, Board) :-
+	repeat,
 	get_code(Seat1),
 	Seat is Seat1 - 48,
-	get_code(Enter).
+	Seat < 9,
+	Seat >= 0,
+	get_code(Enter),
+	at(Elem, Table, Board),
+	at(Token, Seat, Elem),
+	Token == '.'.
+	% play(Table, Seat, Board, Token, ValidPosition).
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
@@ -137,7 +145,7 @@ eraseWaiter(Board, Index, -1, NewBoard) :-
 	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
 
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
-	play(Seat),
+	play(Table, Seat, Board),
 	write(Seat),
 	nl,
 	write(Table),
