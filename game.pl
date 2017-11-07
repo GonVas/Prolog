@@ -13,7 +13,7 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 
 	write('Do you want to trigger special, move one piece to other table (y/n): '), nl,
 	get_code(Permission),
-	Permission ==  121,
+	Permission ==  121, % 'y' character
 
 	repeat,
 	write('Triggered Special Move, change on piece to another Table, write first piece: '),
@@ -43,11 +43,16 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 	get_code(_),
 
 	at(Elem, ToTable, Board),
+	write('Elem is : '), write(Elem), nl,
 	at(Token, Seat2, Elem),
+	write('Token is : '), write(Token), nl,
 	Token == '.',
 
-	eraseTea(Board, FromTable, Seat1, NewBoard),
-	serveTea(NewBoard, ToTable, TeaToken, NewBoard).
+	write('Going to erasing Tea'), nl,
+	eraseTea(Board, FromTable, Seat, NewBoard1),
+	write('Erased Tea'), nl,
+	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard),
+	write('Served Tea'), nl.
 
 
 moveOneToOther_3(Board,_,_,NewBoard):-
@@ -56,6 +61,7 @@ moveOneToOther_3(Board,_,_,NewBoard):-
 
 eraseTea(Board, Table, Seat, NewBoard) :-
 	at(Elem, Table, Board),
+	write('Hello Elem: '), write(Elem), nl,
 	replace('.', Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
@@ -134,7 +140,7 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 gameLoop(1, _).
 gameLoop(End, Table, Board) :-
 	turn('X', Table, Board, NewBoard, NewTable),
-	moveOneToOther_3(NewBoard, NewTable, 'X', NewBoard1), 
+	moveOneToOther_3(NewBoard, Table, 'X', NewBoard1), 
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2).
 
