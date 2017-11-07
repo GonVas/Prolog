@@ -137,8 +137,25 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	assignValue(Seat, NewTable),
 	drawBoard(NewBoard).
 
-gameLoop(1, _).
+countMajorTables([], _ , _, _, _).
+
+countMajorTables(Board, Init, Total, Token) :- 
+	at(Elem, Init, Board),
+ 	countTokenTables(Elem, TableTotal, Token),
+	Init1 is Init+1,
+	countMajorTables(Board, Init1, Total, Token)
+
+endCondition(Board) :-
+	write('No end'),
+	countMajorTables(Board, 0, Total, Token),
+	write('Total tables is : ') , write(Total), nl,
+	Total > 4,
+	write('We have a winner, congratiolations'), nl.
+
 gameLoop(End, Table, Board) :-
+	endCondition(Board).
+gameLoop(End, Table, Board) :-
+	repeat,
 	turn('X', Table, Board, NewBoard, NewTable),
 	moveOneToOther_3(NewBoard, Table, 'X', NewBoard1), 
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
