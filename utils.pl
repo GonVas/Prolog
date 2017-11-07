@@ -17,6 +17,13 @@ find(ElemToFind, Start, End, [Head|Tail]) :-
 	Index1 is Start+1,
 	find(ElemToFind, Index1, End, Tail).
 
+
+count([],X,0).
+count([X|T],X,Y):- count(T,X,Z), Y is 1+Z.
+count([X1|T],X,Z):- X1\=X,count(T,X,Z).
+
+%countTableToken(TeaToken, Table, InitCount, Total):-
+
 replace(New,0,[_|OldList],[New|OldList]).
 replace(New,Index,[Head|OldList],[Head|NewList]):-
 	Index > 0,
