@@ -8,7 +8,6 @@
 moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 	at(CountTable, FromTable, Board),
 	count(CountTable, TeaToken, Total),
-%	write('Total for Special is : '), write(Total), nl, 
 	Total > 2,
 
 %	write('Do you want to trigger special, move one piece to other table (y/n): '), nl,
@@ -51,7 +50,7 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 %	write('Going to erasing Tea'), nl,
 	eraseTea(Board, FromTable, Seat, NewBoard1),
 %	write('Erased Tea'), nl,
-	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard),
+	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard).
 %	write('Served Tea'), nl.
 
 
@@ -60,33 +59,67 @@ moveOneToOther_3(Board,_,_,NewBoard):-
 	assignValue(Board, NewBoard).
 
 
-moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard):-
+moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat):-
 	at(CountTable, FromTable, Board),
-	count(CountTable, TeaToken, Total),
-%	write('Total for Special is : '), write(Total), nl, 
+	count(CountTable, TeaToken, Total), 
 	Total > 3,
 
+	at(Elem, FromTable, Board),
+	find('W', 0, WaiterIndex, Elem),
+
+	write('WaiterIndex : '), write(WaiterIndex), nl,
+
 	repeat,
-	write('Triggered Special Move, Move Waiter To other Table: '),
+	write('Triggered Special Move, Move Waiter To other Table: '), nl,
 	get_code(Table1),
 	ToTable is Table1 - 48,
 	ToTable < 9,
 	ToTable >= 0,
 	get_code(_),
 
-
-	at(Elem, ToTable, Board),
-%	write('Elem is : '), write(Elem), nl,
-	find('W', 0, WaiterIndex, Elem),
-	at(Token, WaiterIndex, Elem),
+	at(NewTable, ToTable, Board),
+	at(Token, WaiterIndex, NewTable),
+	write(Token), nl,
 	Token == '.',
 
 	eraseWaiter(Board, 0, -1, NewBoard2),
-	write('Im here'), nl,
-	moveWaiter(NewBoard2, ToTable, WaiterIndex, NewBoard).
+	
+	moveWaiter(NewBoard2, ToTable, WaiterIndex, NewBoard),
+
+	assignValue(ToTable, NewSeat),
+
+	write('NewSeat : '), write(NewSeat), nl.
+
+
+%moveWaiterToOther_4(Board, _, _, NewBoard):-
+%	assignValue(Board, NewBoard).
+
+
+replaceTables_5(Board, FromTable, TeaToken, NewBoard) :-
+	at(CountTable, FromTable, Board),
+	count(CountTable, TeaToken, Total), 
+	Total > 4,
+	
+	repeat,
+	write('Triggered Special Move, Move this Table To Unclaimed: '), nl,
+	get_code(Table1),
+	ToTable is Table1 - 48,
+	ToTable < 9,
+	ToTable >= 0,
+	get_code(_),
+
+	at(ToTableData, ToTable, Board),
+	at(FromTableData, FromTable, Board),
+
+	assignValue(FromTable, FromTableBuffer),
+	
+	replace(FromTableData, ToTable, Board, NewBoard1),
+	replace(ToTableData, FromTable, NewBoard1, NewBoard),
+	
+	write('Done Move Table'), nl.
 	
 
-moveWaiterToOther_4(Board, _, _, NewBoard):-
+replaceTables_5(Board, FromTable, TeaToken, NewBoard) :-
 	assignValue(Board, NewBoard).
 
 eraseTea(Board, Table, Seat, NewBoard) :-
@@ -174,6 +207,16 @@ eraseWaiter(Board, Index, -1, NewBoard) :-
 	Index1 is Index+1,
 	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
 
+%handleWaiter(Board, Seat, Table, TeaToken, NewBoard, NewSeat):-
+	%moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeat),
+%	assignValue(Seat, NewSeat).
+
+handleWaiter(Board, Seat, Table, TeaToken, NewBoard, NewSeat):-
+	eraseWaiter(Board, 0, -1, NewBoard2),
+	moveWaiter(NewBoard2, Seat, Seat, NewBoard),
+	assignValue(Seat, NewSeat).
+	
+
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn.'), nl,
 	play(Table, Seat, Board),
@@ -182,17 +225,11 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write(Table),
 	nl,
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	eraseWaiter(NewBoard1, 0, -1, NewBoard2),
-
-
-
-	moveWaiter(NewBoard2, Seat, Seat, NewBoard),
-	assignValue(Seat, NewTable),
+	handleWaiter(NewBoard1, Seat, Table, TeaToken, NewBoard, NewSeat),
+	assignValue(NewSeat, NewTable),
 	drawBoard(NewBoard).
 
 %============================Counting Tables ================================
-
-%countTokenTables([], _, _, _, _).
 
 countTokenTables(IsMajor,Total) :-
 	Total > 4,
@@ -203,37 +240,27 @@ countTokenTables(IsMajor, Total) :-
 	IsMajor = 0.
 
 countMajorTables(Board, Max, Total, Token) :-
-%	write('Base Case'), nl,
 	Max < 0.
 
 countMajorTables(Board, Max, Total, Token, NewTotal) :-
-%	write('Recursive Case'), nl,
 	Max >= 0,
 	at(Elem, Max, Board),
-	%write('Elem : ') , write(Elem) , nl,
 	count(Elem, Token, TableTotal),
-	%write('TabelTotal: ') , write(TableTotal) , nl,
 	countTokenTables(IsMajor, TableTotal),
-	%write('Ismajor : ') , write(IsMajor) , nl,
 	Total1 is Total + IsMajor,
 	Max1 is Max-1,
-	%write('Counting tables Total: '), write(Total1), nl,
 	countMajorTables(Board, Max1, Total1, Token, Total1).
 
 %//============================Counting Tables ================================
 
 
-endCondition(Board) :-
-	%write('Going to count Major Tables'), nl,
+endCondition(Board) :- %  For player X
 	countMajorTables(Board, 8, 0, 'X', NewTotal),
-	%write('Total X tables is : ') , write(NewTotal), nl,
 	NewTotal > 4,
 	write('Congratulations Player X you have won.'), nl.
 
-endCondition(Board) :-
-	%write('Going to count Major Tables'), nl,
+endCondition(Board) :- %  For player 0
 	countMajorTables(Board, 8, 0, 'O', NewTotal),
-	%write('Total O tables is : ') , write(NewTotal), nl,
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
 
@@ -242,8 +269,10 @@ gameLoop(End, Table, Board) :-
 gameLoop(End, Table, Board) :-
 	repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
-	Total is 0,
-	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+
+	replaceTables_5(NewBoard1, Table, 'X', NewBoard3),
+
+	turn('O', NewTable, NewBoard3, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2).
 
 start :-
