@@ -9,16 +9,16 @@ assignValue(V1, V2) :-
 	V1 \= V2,
 	assignValue(V1, V1).
 
-find(Elem, Start, Start1, []) :-
+find(_, _, Start1, []) :-
 	Start1 = -1.
 find(Elem, Start, Start1, [Elem|_]) :-
 	Start1 = Start.
-find(ElemToFind, Start, End, [Head|Tail]) :-
+find(ElemToFind, Start, End, [_|Tail]) :-
 	Index1 is Start+1,
 	find(ElemToFind, Index1, End, Tail).
 
 
-count([],X,0).
+count([],_,0).
 count([X|T],X,Y):- count(T,X,Z), Y is 1+Z.
 count([X1|T],X,Z):- X1\=X,count(T,X,Z).
 
