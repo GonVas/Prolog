@@ -24,18 +24,11 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 	replace('W', Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-% TODO change this fkin repeat
 play(Table, Seat, Board) :-
-	repeat,
-	get_code(Seat1),
-	Seat is Seat1 - 48,
-	Seat < 9,
-	Seat >= 0,
-	get_code(_),
+	getNumberInput(Seat),
 	at(Elem, Table, Board),
 	at(Token, Seat, Elem),
-	(Token == '.'; Token == 'W').
-	% play(Table, Seat, Board, Token, ValidPosition).
+	Token == '.'.
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
@@ -52,29 +45,22 @@ eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
 	replace(NewElem, Index1, Board, NewBoard),
 	eraseWaiter(-1,-1,-1,-1). %Return
 
+%TODO waiter can be on top of tea, we need special tokens to symbolize that
 eraseWaiter(Board, Index, -1, NewBoard) :-
 	at(Elem, Index, Board),
 	find('W', 0, WaiterIndex, Elem),
 	Index1 is Index+1,
 	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
 
-%handleWaiter(Board, Seat, Table, TeaToken, NewBoard, NewSeat):-
-	%moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeat),
-%	assignValue(Seat, NewSeat).
-
 handleWaiter(Board, Seat, NewBoard, NewSeat):-
-	eraseWaiter(Board, 0, -1, NewBoard2),
-	moveWaiter(NewBoard2, Seat, Seat, NewBoard),
+	eraseWaiter(Board, 0, -1, NewBoard1),
+	moveWaiter(NewBoard1, Seat, Seat, NewBoard),
 	assignValue(Seat, NewSeat).
 
 
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
-	write('Player '), write(TeaToken), write(' turn.'), nl,
+	write('Player '), write(TeaToken), write(' turn: '), nl,
 	play(Table, Seat, Board),
-	write(Seat),
-	nl,
-	write(Table),
-	nl,
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
 	handleWaiter(NewBoard1, Seat, NewBoard, NewSeat),
 	assignValue(NewSeat, NewTable),
@@ -110,7 +96,7 @@ endCondition(Board) :- %  For player X
 	NewTotal > 4,
 	write('Congratulations Player X you have won.'), nl.
 
-endCondition(Board) :- %  For player 0
+endCondition(Board) :- %  For player O
 	countMajorTables(Board, 8, 0, 'O', NewTotal),
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
@@ -121,7 +107,7 @@ gameLoop(End, Table, Board) :-
 	repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
 
-	replaceTables_5(NewBoard1, Table, 'X', NewBoard3),
+	swapTables_5(NewBoard1, Table, 'X', NewBoard3),
 
 	turn('O', NewTable, NewBoard3, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2).
