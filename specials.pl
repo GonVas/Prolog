@@ -94,7 +94,7 @@ rotateTable_4(Board, Table, TeaToken, NewBoard) :-
 
 	write('Triggered: \'Rotate Table\'!'), nl,
 	write('Insert number of clockwise rotations: '),
-	getNumberInput(NRot, 0, 7).
+	getNumberInput(NRot, 0, 7),
 
 	applyRotation(TableElem, NRot, RotatedTable),
 	replace(RotatedTable, Table, Board, NewBoard).

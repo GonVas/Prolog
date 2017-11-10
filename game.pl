@@ -1,23 +1,7 @@
 :-include('utils.pl').
 :-include('io.pl').
 :-include('specials.pl').
-
-createSeats([], M, M). 		%Stop if 2nd args = 3rd arg meaning max elems reached
-%Creates the seats of a table
-createSeats([H|T], N, M) :-
-	N < M, 									%add elements until max elements is reached
-	N1 is N+1, 							%keep track of added element
-	H = '.', 								%element to add
-	createSeats(T,N1,M).  	%recursive call
-
-
-createTables([], M, M). %Stop if 2nd args = 3rd arg meaning max elems reached
-%Creates the tables of the game
-createTables([H|T], N, M) :-
-	N < M, 									%add elements until max elements is reached
-	N1 is N+1, 							%keep track of added element
-	createSeats(H,0,M),  		%add an empty list
-	createTables(T, N1, M). %recursive call
+:-include('create.pl').
 
 moveWaiter(Board, Table, Seat, NewBoard) :-
 	at(Elem, Table, Board),
@@ -56,7 +40,6 @@ handleWaiter(Board, Seat, NewBoard, NewSeat):-
 	eraseWaiter(Board, 0, -1, NewBoard1),
 	moveWaiter(NewBoard1, Seat, Seat, NewBoard),
 	assignValue(Seat, NewSeat).
-
 
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn: '), nl,
@@ -113,7 +96,7 @@ gameLoop(End, Table, Board) :-
 	gameLoop(End, NewTable1, NewBoard2).
 
 start :-
-	createTables(Board,0,9),
+	createTables(Board,0,10),
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
 	gameLoop(0, 0, NewBoard).

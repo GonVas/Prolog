@@ -9,11 +9,20 @@ assignValue(V1, V2) :-
 	V1 \= V2,
 	assignValue(V1, V1).
 
+push(Elem, [], [Head|Tail]) :-
+	Head = Elem,
+	Tail = [].
+
+push(Elem, [Head|Tail], [NewHead|NewTail]) :-
+	NewHead = Head,
+	push(Elem, Tail, NewTail).
+
 find(_, _, Start1, []) :-
 	Start1 = -1.
 find(Elem, Start, Start1, [Elem|_]) :-
 	Start1 = Start.
 find(ElemToFind, Start, End, [_|Tail]) :-
+	End \== -1,
 	Index1 is Start+1,
 	find(ElemToFind, Index1, End, Tail).
 
