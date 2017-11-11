@@ -42,16 +42,12 @@ handleWaiter(Board, Seat, NewBoard, NewSeat) :-
 	assignValue(Seat, NewSeat).
 
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
-	write('Player '), write(TeaToken), write(' turn: '), nl,
+	write('Player '), write(TeaToken), write(' turn: '),
 	play(Table, Seat, Board),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	write('After serve tea'), nl,
 	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeat),
-	write('After handleWaiter'), nl,
 	assignValue(NewSeat, NewTable),
-	write('After assignValue'), nl,
 	checkSpecials(NewBoard2, Table, TeaToken, NewBoard),
-	write('After checkSpecials'), nl,
 	drawBoard(NewBoard).
 
 %============================Counting Tables ================================
