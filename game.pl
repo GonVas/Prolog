@@ -9,10 +9,11 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 	replace(NewElem, Table, Board, NewBoard).
 
 play(Table, Seat, Board) :-
-	getNumberInput(Seat, 0, 8),
-	at(Elem, Table, Board),
-	at(Token, Seat, Elem),
-	Token == '.'.
+	repeat,
+		getNumberInput(Seat, 0, 8),
+		at(Elem, Table, Board),
+		at(Token, Seat, Elem),
+		Token == '.'.
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
@@ -44,10 +45,10 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn: '), nl,
 	play(Table, Seat, Board),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeat),
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeat),
 	assignValue(NewSeat, NewTable),
-	checkSpecials(NewBoard, NewTable, TeaToken, NewBoard1),
-	drawBoard(NewBoard1).
+	checkSpecials(NewBoard2, Table, TeaToken, NewBoard),
+	drawBoard(NewBoard).
 
 %============================Counting Tables ================================
 
@@ -82,8 +83,6 @@ countMajorTables(Board, Max, Total, Token, _) :-
 	6 -> Swap both not claimed
 	7 -> Swap claimed with unclaimed
 */
-checkSpecial(Board, _, _, _, NewBoard) :-
-	assignValue(Board, NewBoard).
 checkSpecial(Board, Table, 0, TeaToken, NewBoard) :-
 	TeaToken == 'X',
 	moveOneToOther_3(Board, Table, TeaToken, NewBoard).
@@ -105,6 +104,8 @@ checkSpecial(Board, Table, 6, TeaToken, NewBoard) :-
 checkSpecial(Board, Table, 7, TeaToken, NewBoard) :-
 	swapTables_5(Board, Table, TeaToken, NewBoard).
 
+checkSpecial(Board, 0, _, _, NewBoard) :-
+	assignValue(Board, NewBoard).
 
 endCondition(Board) :- %  For player X
 	countMajorTables(Board, 8, 0, 'X', NewTotal),
@@ -116,7 +117,10 @@ endCondition(Board) :- %  For player O
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
 
+checkSpecials(Board, 0, _, NewBoard) :-
+	assignValue(Board, NewBoard).
 checkSpecials(Board, Table, TeaToken, NewBoard) :-
+	Table \= 0,
 	at(Specials, 9, Board),
 	Table1 is Table - 1,
 	at(Special, Table1, Specials),
@@ -127,7 +131,7 @@ gameLoop(_, _, Board) :-
 gameLoop(End, Table, Board) :-
 	repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
-	turn('O', NewTable, NewBoard3, NewBoard2, NewTable1),
+	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2).
 
 start :-

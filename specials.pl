@@ -1,5 +1,4 @@
-moveOneToOther_3(Board,_,_,NewBoard):-
-	assignValue(Board, NewBoard).
+
 moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 	at(CountTable, FromTable, Board),
 	count(CountTable, TeaToken, Total),
@@ -24,7 +23,8 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 
 	eraseTea(Board, FromTable, Seat, NewBoard1),
 	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard).
-
+moveOneToOther_3(Board,_,_,NewBoard):-
+	assignValue(Board, NewBoard).
 
 moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat):-
 	at(CountTable, FromTable, Board),
@@ -48,8 +48,6 @@ moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat):-
 	assignValue(ToTable, NewSeat),
 	write('NewSeat : '), write(NewSeat), nl.
 
-swapTables_5(Board, _, _, NewBoard) :-
-	assignValue(Board, NewBoard).
 swapTables_5(Board, FromTable, TeaToken, NewBoard) :-
 	at(CountTable, FromTable, Board),
 	count(CountTable, TeaToken, Total),
@@ -63,8 +61,7 @@ swapTables_5(Board, FromTable, TeaToken, NewBoard) :-
 
 	replace(FromTableData, ToTable, Board, NewBoard1),
 	replace(ToTableData, FromTable, NewBoard1, NewBoard).
-
-swapTables_4(Board, _, _, NewBoard) :-
+swapTables_5(Board, _, _, NewBoard) :-
 	assignValue(Board, NewBoard).
 swapTables_4(Board, FromTable, TeaToken, NewBoard) :-
 	at(CountTable, FromTable, Board),
@@ -79,8 +76,7 @@ swapTables_4(Board, FromTable, TeaToken, NewBoard) :-
 
 	replace(FromTableData, ToTable, Board, NewBoard1),
 	replace(ToTableData, FromTable, NewBoard1, NewBoard).
-
-rotateTable_4(Board, _, _, NewBoard) :-
+swapTables_4(Board, _, _, NewBoard) :-
 	assignValue(Board, NewBoard).
 rotateTable_4(Board, Table, TeaToken, NewBoard) :-
 	at(TableElem, Table, Board),
@@ -93,7 +89,8 @@ rotateTable_4(Board, Table, TeaToken, NewBoard) :-
 
 	applyRotation(TableElem, NRot, RotatedTable),
 	replace(RotatedTable, Table, Board, NewBoard).
-
+rotateTable_4(Board, _, _, NewBoard) :-
+	assignValue(Board, NewBoard).
 
 eraseTea(Board, Table, Seat, NewBoard) :-
 	at(Elem, Table, Board),
