@@ -12,5 +12,5 @@ aiTurn(TeaToken, TableNumber, Board, NewBoard, NewTableNumber) :-
 	write(SeatNumber), nl,
 	serveTea(Board, TableNumber, SeatNumber, TeaToken, NewBoard1),
 	handleWaiter(NewBoard1, SeatNumber, NewBoard2, NewTableNumber),
-	checkSpecials(NewBoard2, TableNumber, TeaToken, NewBoard, 1),
+	checkSpecials(NewBoard2, TableNumber, SeatNumber,  TeaToken, NewBoard, NewSeatNumber2, 1),
 	drawBoard(NewBoard).

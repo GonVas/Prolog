@@ -4,6 +4,8 @@
 :-include('create.pl').
 :-include('waiter.pl').
 :-include('ai.pl').
+:-use_module(library(system)).
+
 
 play(Table, Seat, Board) :-
 	repeat,
@@ -96,20 +98,37 @@ endCondition(Board) :- %  For player O
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
 
-gameLoop(_, _, Board) :-
+gameLoop(_, _, Board, _) :-
 	endCondition(Board).
-gameLoop(End, Table, Board) :-
+gameLoop(End, Table, Board, AI) :- % Human Version
+    AI == 0,
 	repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
-	gameLoop(End, NewTable1, NewBoard2).
+	gameLoop(End, NewTable1, NewBoard2, AI).
 
-start :-
+gameLoop(End, Table, Board, AI) :- % Ai Version human becomes 'X'
+    AI == 1,
+    repeat,
+    turn('X', Table, Board, NewBoard1, NewTable),
+    aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+    gameLoop(End, NewTable1, NewBoard2, AI).
+
+gameLoop(End, Table, Board, AI) :- % AI vs AI Version
+    AI == 2,
+    repeat,
+    aiTurn('X', Table, Board, NewBoard1, NewTable),
+    sleep(2),
+    aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+    sleep(2),
+    gameLoop(End, NewTable1, NewBoard2, AI).
+
+start(AI) :-
 	clearScreen,
 	createTables(Board,0,10),
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
-	gameLoop(0, 0, NewBoard).
+	gameLoop(0, 0, NewBoard, AI).
 
 
 playMenu :-
@@ -117,9 +136,9 @@ playMenu :-
 	printPlayMenu,
 	getNumberInput(Option, 1, 4),
 	(
-		Option = 1 -> write('Starting Human vs Human \n'), start, startMenu;
-		Option = 2 -> write('Starting Ai vs Human \n'), startMenu;
-		Option = 3 -> write('Starting Ai vs Ai \n'), startMenu;
+		Option = 1 -> write('Starting Human vs Human \n'), start(0), startMenu;
+		Option = 2 -> write('Starting Ai vs Human \n'), start(1), startMenu;
+		Option = 3 -> write('Starting Ai vs Ai \n'), start(2), startMenu;
 		startMenu
 	).
 
