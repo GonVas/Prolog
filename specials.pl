@@ -55,9 +55,8 @@ swapTables_5(Board, FromTable, TeaToken, NewBoard, AI) :-
 
 	write('Triggered: \'Swap Claimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
-	getUnclaimedTable(Board, ToTable, AI),
+	getUnclaimedTable(Board, ToTableData, AI),
 	at(FromTableData, FromTable, Board),
-	at(ToTableData, ToTable, Board),
 
 	replace(FromTableData, ToTable, Board, NewBoard1),
 	replace(ToTableData, FromTable, NewBoard1, NewBoard).
@@ -72,9 +71,8 @@ swapTables_4(Board, FromTable, TeaToken, NewBoard, AI) :-
 
 	write('Triggered: \'Swap Unclaimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
-	getUnclaimedTable(Board, ToTable, AI),
+	getUnclaimedTable(Board, ToTableData, AI),
 	at(FromTableData, FromTable, Board),
-	at(ToTableData, ToTable, Board),
 
 	replace(FromTableData, ToTable, Board, NewBoard1),
 	replace(ToTableData, FromTable, NewBoard1, NewBoard).

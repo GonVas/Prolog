@@ -100,28 +100,25 @@ endCondition(Board) :- %  For player O
 
 gameLoop(_, _, Board, _) :-
 	endCondition(Board).
-gameLoop(End, Table, Board, AI) :- % Human Version
-    AI == 0,
-	repeat,
+gameLoop(End, Table, Board, 0) :- % Human Version
+	% repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
-	gameLoop(End, NewTable1, NewBoard2, AI).
+	gameLoop(End, NewTable1, NewBoard2, 0).
 
-gameLoop(End, Table, Board, AI) :- % Ai Version human becomes 'X'
-    AI == 1,
-    repeat,
-    turn('X', Table, Board, NewBoard1, NewTable),
-    aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
-    gameLoop(End, NewTable1, NewBoard2, AI).
+gameLoop(End, Table, Board, 1) :- % Ai Version human becomes 'X'
+  % repeat,
+  turn('X', Table, Board, NewBoard1, NewTable),
+  aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+  gameLoop(End, NewTable1, NewBoard2, 1).
 
-gameLoop(End, Table, Board, AI) :- % AI vs AI Version
-    AI == 2,
-    repeat,
-    aiTurn('X', Table, Board, NewBoard1, NewTable),
-    sleep(2),
-    aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
-    sleep(2),
-    gameLoop(End, NewTable1, NewBoard2, AI).
+gameLoop(End, Table, Board, 2) :- % AI vs AI Version
+  % repeat,
+  aiTurn('X', Table, Board, NewBoard1, NewTable),
+  % sleep(2),
+  aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+  % sleep(2),
+  gameLoop(End, NewTable1, NewBoard2, 2).
 
 start(AI) :-
 	clearScreen,
@@ -130,15 +127,14 @@ start(AI) :-
 	drawBoard(NewBoard),
 	gameLoop(0, 0, NewBoard, AI).
 
-
 playMenu :-
 	clearScreen,
 	printPlayMenu,
 	getNumberInput(Option, 1, 4),
 	(
-		Option = 1 -> write('Starting Human vs Human \n'), start(0), startMenu;
-		Option = 2 -> write('Starting Ai vs Human \n'), start(1), startMenu;
-		Option = 3 -> write('Starting Ai vs Ai \n'), start(2), startMenu;
+		Option == 1 -> write('Starting Human vs Human \n'), start(0), startMenu;
+		Option == 2 -> write('Starting Ai vs Human \n'), start(1), startMenu;
+		Option == 3 -> write('Starting Ai vs Ai \n'), start(2), startMenu;
 		startMenu
 	).
 
@@ -153,7 +149,7 @@ startMenu :-
 
 play :-
 	startMenu.
-  
+
 %============================Counting Tables ================================
 
 countTokenTables(IsMajor,Total) :-
@@ -177,4 +173,3 @@ countMajorTables(Board, Max, Total, Token, _) :-
 	countMajorTables(Board, Max1, Total1, Token, Total1).
 
 %//============================Counting Tables ================================
-

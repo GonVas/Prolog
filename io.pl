@@ -182,7 +182,8 @@ mainCliMenu :-
 getNumberInput(Input, Min, Max, 0) :-
 	getNumberInput(Input, Min, Max).
 getNumberInput(Input, Min, Max, 1) :-
-	random(0, 9, Input).
+	Max1 is Max + 1,
+	random(Min, Max1, Input).
 
 %Gets a number from user that must be within [Min, Max]
 getNumberInput(Input, Min, Max) :-
