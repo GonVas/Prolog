@@ -1,3 +1,12 @@
+specToChar(0, 'XMT').
+specToChar(1, 'OMT').
+specToChar(2, 'XMW').
+specToChar(3, 'OMW').
+specToChar(4, 'ROT').
+specToChar(5, 'ROT').
+specToChar(6, 'SUU').
+specToChar(7, 'SCU').
+
 %draws top seats
 drawST(L) :-
 	at(Token,3,L),
@@ -19,15 +28,39 @@ drawSBM(L) :-
 drawSB(L) :-
 	at(Token,7,L), write(Token).
 
+%draws special top
+drawSpecT(L) :-
+	at(Temp, 2, L), specToChar(Temp, Token),
+	write(Token).
+%draws special top middle
+drawSpecTM(L) :-
+	at(Temp1, 3, L), at(Temp2, 1, L),
+	specToChar(Temp1, Token1), specToChar(Temp2, Token2),
+	write(Token1), space(3), write(Token2).
+%draws special middle
+drawSpecM(L) :-
+	at(Temp1, 4, L), at(Temp2, 0, L),
+	specToChar(Temp1, Token1), specToChar(Temp2, Token2),
+	write(Token1), space(5), write(Token2).
+%draws special bottom middle
+drawSpecBM(L) :-
+	at(Temp1, 5, L), at(Temp2, 7, L),
+	specToChar(Temp1, Token1), specToChar(Temp2, Token2),
+	write(Token1), space(3), write(Token2).
+%draws special bottom
+drawSpecB(L) :-
+	at(Temp, 6, L), specToChar(Temp, Token), write(Token).
+
+
 drawBoard(Board) :-
 	Example = [0,1,2,3,4,5,6,7,8],
 	at(L1,3,Board),
 	at(Specials, 9, Board),
-	space(4), drawST(Example), space(27), drawST(L1), space(27), drawST(Specials), nl,
-	space(1), drawSTM(Example), space(21), drawSTM(L1), space(21), drawSTM(Specials), nl,
-	drawSM(Example), space(19), drawSM(L1), space(19), drawSM(Specials), nl,
-	space(1), drawSBM(Example), space(21), drawSBM(L1), space(21), drawSBM(Specials), nl,
-	space(4), drawSB(Example), space(27), drawSB(L1), space(27), drawSB(Specials), nl,
+	space(4), drawST(Example), space(27), drawST(L1), space(25), drawSpecT(Specials), nl,
+	space(1), drawSTM(Example), space(21), drawSTM(L1), space(19), drawSpecTM(Specials), nl,
+	drawSM(Example), space(19), drawSM(L1), space(17), drawSpecM(Specials), nl,
+	space(1), drawSBM(Example), space(21), drawSBM(L1), space(19), drawSpecBM(Specials), nl,
+	space(4), drawSB(Example), space(27), drawSB(L1), space(25), drawSpecB(Specials), nl,
 
 	at(L2,4,Board), at(L3,2,Board),
 	space(14), drawST(L2), space(33), drawST(L3), nl,

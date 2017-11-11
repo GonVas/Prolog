@@ -77,15 +77,16 @@ countMajorTables(Board, Max, Total, Token, _) :-
 	countMajorTables(Board, Max1, Total1, Token, Total1).
 
 %//============================Counting Tables ================================
+
 /* SPECIALS
-	0 -> X Player move tea
-	1 -> O Player move tea
-	2 -> X Player move Waiter
-	3 -> O Player move Waiter
-	4 -> Rotate table
-	5 -> Rotate table
-	6 -> Swap both not claimed
-	7 -> Swap claimed with unclaimed
+	0 -> X Player move tea (XMT)
+	1 -> O Player move tea (OMT)
+	2 -> X Player move Waiter (XMW)
+	3 -> O Player move Waiter (OMW)
+	4 -> Rotate table (ROT)
+	5 -> Rotate table (ROT)
+	6 -> Swap both not claimed (SUU)
+	7 -> Swap claimed with unclaimed (SCU)
 */
 checkSpecial(Board, Table, 0, TeaToken, NewBoard) :-
 	TeaToken == 'X',

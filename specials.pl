@@ -1,4 +1,3 @@
-
 moveOneToOther_3(Board, FromTable, TeaToken, NewBoard):-
 	at(CountTable, FromTable, Board),
 	count(CountTable, TeaToken, Total),
@@ -79,7 +78,7 @@ swapTables_4(Board, FromTable, TeaToken, NewBoard) :-
 	replace(ToTableData, FromTable, NewBoard1, NewBoard).
 swapTables_4(Board, _, _, NewBoard) :-
 	assignValue(Board, NewBoard).
-	
+
 rotateTable_4(Board, Table, TeaToken, NewBoard) :-
 	at(TableElem, Table, Board),
 	count(TableElem, TeaToken, Total),
