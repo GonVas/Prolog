@@ -98,3 +98,83 @@ space(Start,End):-
 
 space(Number) :-
 	space(0, Number).
+
+printMenu :-
+	write('======================================\n'),
+	write('=             Oolong Tea             =\n'),
+	write('=           ==============           =\n'),
+	write('=                                    =\n'),
+	write('=              1 - Start             =\n'),
+	write('=              2 - Rules             =\n'),
+	write('=              3 - Exit              =\n'),
+	write('=                                    =\n'),
+	write('=                                    =\n'),
+	write('=  Goncalo Moreno        up201503871 =\n'),
+	write('=  Joao Almeida          up201505866 =\n'),
+	write('======================================\n').
+
+
+printPlayMenu :-
+	write('======================================\n'),
+	write('=             Play Mode              =\n'),
+	write('=           =============            =\n'),
+	write('=                                    =\n'),
+	write('=          1 - Human vs Human        =\n'),
+	write('=          2 - Ai vs Human           =\n'),
+	write('=          3 - Ai vs Ai              =\n'),
+	write('=          4 - Exit                  =\n'),
+	write('=                                    =\n'),
+	write('=  Goncalo Moreno        up201503871 =\n'),
+	write('=  Joao Almeida          up201505866 =\n'),
+	write('======================================\n').
+
+
+printInfoMenu :-
+	write('========================================================\n'),
+	write('=                      Info Menu                       =\n'),
+	write('=                    =============                     =\n'),
+	write('=                                                      =\n'),
+	write('= Oolong is a game of area control for two players.    =\n'),
+	write('= Take turns serving tea to tables in the tea house    =\n'),
+	write('= in an attempt to serve more of your tea than your    =\n'),
+	write('= opponent. Your turn consists of simply placing a     =\n'),
+	write('= token on a tile, but your play tells your opponent   =\n'),
+	write('= where theyre allowed to play next. Controlling a     =\n'),
+	write('= tile will trigger that table s special of the day,   =\n'),
+	write('= a unique one time ability. Will you be shrewd enough =\n'),
+	write('= to fully serve the most tables and savor sweet       =\n'),
+	write('= victory?                                             =\n'),
+	write('=                                                      =\n'),
+	write('= The 9 tiles are arranged just like a regular compass =\n'),
+	write('= rose, plus the center. Players take turns placing a  =\n'),
+	write('= token of their color. The space in which a token is  =\n'),
+	write('= placed indicates the tile on which the next player   =\n'),
+	write('= will place their token. The player who is first to   =\n'),
+	write('= occupy 5 spaces on a tile controls that tile. Unique =\n'),
+	write('= special abilities for each tile are triggered at     =\n'),
+	write('= different levels of completeness.                    =\n'),
+	write('= Whomever is first to control 5 tiles wins.           =\n'),
+	write('=                                                      =\n'),
+	write('=                                                      =\n'),
+	write('=          PRESS ANY KEY AND ENTER TO GO BACK          =\n'),
+	write('=                                                      =\n'),
+	write('=                                                      =\n'),
+	write('= Goncalo Moreno                           up201503871 =\n'),
+	write('= Joao Almeida                             up201505866 =\n'),
+	write('========================================================\n').
+
+
+clearScreen :-
+	write('\33\[2J').
+
+
+mainCliMenu :-
+	clearScreen,
+	printMainMenu,
+	getChar(In),
+	(
+		In = '1' -> write('Chose to play\n'), playMenu;
+		In = '2' -> write('Chose Info\n'), infoMenu;
+		In = '3' -> write('Chose Exit\n');
+		mainMenu
+	).

@@ -137,7 +137,31 @@ gameLoop(End, Table, Board) :-
 	gameLoop(End, NewTable1, NewBoard2).
 
 start :-
+	clearScreen,
 	createTables(Board,0,10),
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
 	gameLoop(0, 0, NewBoard).
+
+playMenu :-
+	clearScreen,
+	printPlayMenu,
+	getNumberInput(Option, 1, 4),
+	(
+		Option = 1 -> write('Starting Human vs Human \n'), start, startMenu;
+		Option = 2 -> write('Starting Ai vs Human \n'), startMenu;
+		Option = 3 -> write('Starting Ai vs Ai \n'), startMenu;
+		startMenu
+	).
+
+startMenu :-
+	clearScreen,
+	printMenu,
+	getNumberInput(Option, 1, 3),
+	(
+		Option = 1 -> clearScreen, playMenu, startMenu;
+		Option = 2 -> clearScreen, printInfoMenu, get_code(Char), startMenu
+	).
+
+play :-
+	startMenu.
