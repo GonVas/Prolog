@@ -9,6 +9,13 @@ assignValue(V1, V2) :-
 	V1 \= V2,
 	assignValue(V1, V1).
 
+%checks if any of the values if different from -1 and returns it
+checkAndAssign(-1, -1, -1, -1).
+checkAndAssign(-1, -1, Value, Value).
+checkAndAssign(-1, Value, -1, Value).
+checkAndAssign(Value, -1, -1, Value).
+
+
 push(Elem, [], [Head|Tail]) :-
 	Head = Elem,
 	Tail = [].
@@ -35,6 +42,17 @@ count([Head|Tail], Elem, Total) :-
 	Head \= Elem,
 	count(Tail, Elem, Total).
 
+countTokens(BoardTable, 'O', Total) :-
+	count(BoardTable, 'O', TempO1),
+	count(BoardTable, '@', TempO2),
+	Total is TempO1 + TempO2.
+
+countTokens(BoardTable, 'X', Total) :-
+	count(BoardTable, 'X', TempO1),
+	count(BoardTable, '%', TempO2),
+	Total is TempO1 + TempO2.
+
+
 %countTableToken(TeaToken, Table, InitCount, Total):-
 
 replace(New,0,[_|OldList],[New|OldList]).
@@ -43,28 +61,6 @@ replace(New,Index,[Head|OldList],[Head|NewList]):-
 	Index1 is Index-1,
 	replace(New,Index1,OldList,NewList).
 
-
-%Gets a number from user that must be within [Min, Max]
-getNumberInput(Input, Min, Max) :-
-	repeat,
-		get_code(Input1),
-		peek_code(Enter),
-		skip_line,
-		Enter == 10,
-		Input is Input1 - 48,
-		Input >= Min,
-		Input =< Max.
-
-%asks for an unclaimed table
-getUnclaimedTable(Board, BoardTable) :-
-	write('Input an unclaimed table: '),
-	repeat,
-		getNumberInput(Table, 0, 8),
-		at(BoardTable, Table, Board),
-		count(BoardTable, 'O', TotalO),
-		count(BoardTable, 'X', TotalX),
-		TotalO @=< 4,
-		TotalX @=< 4.
 
 applyRotation(Table, NRotations, NewTable) :-
 	applyRotation(Table, Table, NRotations, NewTable, 1).

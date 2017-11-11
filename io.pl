@@ -51,7 +51,6 @@ drawSpecBM(L) :-
 drawSpecB(L) :-
 	at(Temp, 6, L), specToChar(Temp, Token), write(Token).
 
-
 drawBoard(Board) :-
 	Example = [0,1,2,3,4,5,6,7,8],
 	at(L1,3,Board),
@@ -178,3 +177,36 @@ mainCliMenu :-
 		In = '3' -> write('Chose Exit\n');
 		mainMenu
 	).
+
+% 0 means ask user, 1 means generate
+getNumberInput(Input, Min, Max, 0) :-
+	getNumberInput(Input, Min, Max).
+getNumberInput(Input, Min, Max, 1) :-
+	random(0, 9, Input).
+
+%Gets a number from user that must be within [Min, Max]
+getNumberInput(Input, Min, Max) :-
+	repeat,
+		get_code(Input1),
+		peek_code(Enter),
+		skip_line,
+		Enter == 10,
+		Input is Input1 - 48,
+		Input >= Min,
+		Input =< Max.
+
+%asks for an unclaimed table
+% AI == 1 is it is an AI
+getUnclaimedTable(Board, BoardTable, AI) :-
+	write('Input an unclaimed table: '),
+	repeat,
+		getNumberInput(Table, 0, 8, AI),
+		at(BoardTable, Table, Board),
+		count(BoardTable, 'O', TempO1),
+		count(BoardTable, '@', TempO2),
+		TotalO is TempO1 + TempO2,
+		count(BoardTable, 'X', TempX1),
+		count(BoardTable, '%', TempX2),
+		TotalX is TempX1 + TempX2,
+		TotalO @=< 4,
+		TotalX @=< 4.
