@@ -11,7 +11,8 @@ createSeats([H|T], N, M) :-
 createTables([], M, M).
 
 createTables([Head|Tail], 9, M) :-
-	assignSpecials(Head, 0, M),
+	M1 is M-1,
+	assignSpecials(Head, 0, M1),
 	createTables(Tail, M, M).
 
 %Creates the tables of the game
@@ -23,7 +24,7 @@ createTables([H|T], N, M) :-
 	createTables(T, N1, M).
 
 assignSpecials(Specials, Index, Size) :-
-	assignSpecials(Specials, Index, Size, Irrelevant).
+	assignSpecials(Specials, Index, Size, _).
 
 assignSpecials([], Index, Index, _).
 assignSpecials([Head|Tail], Index, End, SpecialsCopy) :-

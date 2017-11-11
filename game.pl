@@ -9,7 +9,7 @@ moveWaiter(Board, Table, Seat, NewBoard) :-
 	replace(NewElem, Table, Board, NewBoard).
 
 play(Table, Seat, Board) :-
-	getNumberInput(Seat),
+	getNumberInput(Seat, 0, 8),
 	at(Elem, Table, Board),
 	at(Token, Seat, Elem),
 	Token == '.'.
@@ -19,7 +19,6 @@ serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	replace(TeaToken, Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-eraseWaiter(_, -1, -1, _).
 eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
 	Index >= 0,
 	WaiterIndex >= 0,
@@ -27,7 +26,7 @@ eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
 	at(Elem, Index1, Board),
 	replace('.', WaiterIndex, Elem, NewElem),
 	replace(NewElem, Index1, Board, NewBoard),
-	eraseWaiter(-1,-1,-1,-1). %Return
+	true. %Return
 
 %TODO waiter can be on top of tea, we need special tokens to symbolize that
 eraseWaiter(Board, Index, -1, NewBoard) :-
@@ -36,7 +35,7 @@ eraseWaiter(Board, Index, -1, NewBoard) :-
 	Index1 is Index+1,
 	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
 
-handleWaiter(Board, Seat, NewBoard, NewSeat):-
+handleWaiter(Board, Seat, NewBoard, NewSeat) :-
 	eraseWaiter(Board, 0, -1, NewBoard1),
 	moveWaiter(NewBoard1, Seat, Seat, NewBoard),
 	assignValue(Seat, NewSeat).
@@ -47,7 +46,8 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
 	handleWaiter(NewBoard1, Seat, NewBoard, NewSeat),
 	assignValue(NewSeat, NewTable),
-	drawBoard(NewBoard).
+	checkSpecials(NewBoard, NewTable, TeaToken, NewBoard1),
+	drawBoard(NewBoard1).
 
 %============================Counting Tables ================================
 
@@ -72,6 +72,38 @@ countMajorTables(Board, Max, Total, Token, _) :-
 	countMajorTables(Board, Max1, Total1, Token, Total1).
 
 %//============================Counting Tables ================================
+/* SPECIALS
+	0 -> X Player move tea
+	1 -> O Player move tea
+	2 -> X Player move Waiter
+	3 -> O Player move Waiter
+	4 -> Rotate table
+	5 -> Rotate table
+	6 -> Swap both not claimed
+	7 -> Swap claimed with unclaimed
+*/
+checkSpecial(Board, _, _, _, NewBoard) :-
+	assignValue(Board, NewBoard).
+checkSpecial(Board, Table, 0, TeaToken, NewBoard) :-
+	TeaToken == 'X',
+	moveOneToOther_3(Board, Table, TeaToken, NewBoard).
+checkSpecial(Board, Table, 1, TeaToken, NewBoard) :-
+	TeaToken == 'O',
+	moveOneToOther_3(Board, Table, TeaToken, NewBoard).
+checkSpecial(Board, Table, 2, TeaToken, NewBoard) :-
+	TeaToken == 'X',
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, _).
+checkSpecial(Board, Table, 3, TeaToken, NewBoard) :-
+	TeaToken == 'O',
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, _).
+checkSpecial(Board, Table, 4, TeaToken, NewBoard) :-
+	rotateTable_4(Board, Table, TeaToken, NewBoard).
+checkSpecial(Board, Table, 5, TeaToken, NewBoard) :-
+	rotateTable_4(Board, Table, TeaToken, NewBoard).
+checkSpecial(Board, Table, 6, TeaToken, NewBoard) :-
+	swapTables_4(Board, Table, TeaToken, NewBoard).
+checkSpecial(Board, Table, 7, TeaToken, NewBoard) :-
+	swapTables_5(Board, Table, TeaToken, NewBoard).
 
 
 endCondition(Board) :- %  For player X
@@ -84,14 +116,17 @@ endCondition(Board) :- %  For player O
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
 
+checkSpecials(Board, Table, TeaToken, NewBoard) :-
+	at(Specials, 9, Board),
+	Table1 is Table - 1,
+	at(Special, Table1, Specials),
+	checkSpecial(Board, Table, Special, TeaToken, NewBoard).
+
 gameLoop(_, _, Board) :-
 	endCondition(Board).
 gameLoop(End, Table, Board) :-
 	repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
-
-	swapTables_5(NewBoard1, Table, 'X', NewBoard3),
-
 	turn('O', NewTable, NewBoard3, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2).
 

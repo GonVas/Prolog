@@ -52,14 +52,14 @@ getNumberInput(Input, Min, Max) :-
 		skip_line,
 		Enter == 10,
 		Input is Input1 - 48,
-		Input @>= Min,
-		Input @=< Max.
+		Input >= Min,
+		Input =< Max.
 
 %asks for an unclaimed table
 getUnclaimedTable(Board, BoardTable) :-
 	write('Input an unclaimed table: '),
 	repeat,
-		getNumberInput(Table),
+		getNumberInput(Table, 0, 8),
 		at(BoardTable, Table, Board),
 		count(BoardTable, 'O', TotalO),
 		count(BoardTable, 'X', TotalX),
@@ -81,8 +81,8 @@ applyRotation(Table, _, _, NewTable, 9) :-
 	assignValue(Table, NewTable).
 
 %Needed because the 0 position does not rotate
-rotate(Table, BoardTable, 0, NewTable) :-
-	replace(BoardTable, 8, Board, NewTable).
-rotate(Table, BoardTable, FinalIndex, NewTable) :-
+rotate(Table, Elem, 0, NewTable) :-
+	replace(Elem, 8, Table, NewTable).
+rotate(Table, Elem, FinalIndex, NewTable) :-
 	FinalIndex \= 0,
-	replace(BoardTable, FinalIndex, Board, NewTable).
+	replace(Elem, FinalIndex, Table, NewTable).
