@@ -3,6 +3,7 @@
 :-include('specials.pl').
 :-include('create.pl').
 :-include('waiter.pl').
+:-include('ai.pl').
 
 play(Table, Seat, Board) :-
 	repeat,
@@ -20,9 +21,9 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn: '),
 	play(Table, Seat, Board),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	handleWaiter(NewBoard1, Seat, NewBoard2, NewTable),
-	checkSpecials(NewBoard2, Table, TeaToken, NewBoard),
+	checkSpecials(NewBoard1, Table, Seat, TeaToken, NewBoard, NewTable, 0),
 	drawBoard(NewBoard).
+
 
 /*  ----------------- SPECIALS ----------------------
 	0 -> X Player move tea (XMT)
@@ -34,30 +35,56 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	6 -> Swap both not claimed (SUU)
 	7 -> Swap claimed with unclaimed (SCU)
 */
-checkSpecial(Board, Table, 0, TeaToken, NewBoard) :-
+checkSpecial(Board, Table, Seat, 0, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'X',
-	moveOneToOther_3(Board, Table, TeaToken, NewBoard).
-checkSpecial(Board, Table, 1, TeaToken, NewBoard) :-
+	moveOneToOther_3(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+checkSpecial(Board, Table, Seat, 1, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'O',
-	moveOneToOther_3(Board, Table, TeaToken, NewBoard).
-checkSpecial(Board, Table, 2, TeaToken, NewBoard) :-
+	moveOneToOther_3(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+checkSpecial(Board, Table, _, 	 2, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'X',
-	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, _).
-checkSpecial(Board, Table, 3, TeaToken, NewBoard) :-
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeatNumber, AI).
+
+checkSpecial(Board, Table, _, 	 3, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'O',
-	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, _).
-checkSpecial(Board, Table, 4, TeaToken, NewBoard) :-
-	rotateTable_4(Board, Table, TeaToken, NewBoard).
-checkSpecial(Board, Table, 5, TeaToken, NewBoard) :-
-	rotateTable_4(Board, Table, TeaToken, NewBoard).
-checkSpecial(Board, Table, 6, TeaToken, NewBoard) :-
-	swapTables_4(Board, Table, TeaToken, NewBoard).
-checkSpecial(Board, Table, 7, TeaToken, NewBoard) :-
-	swapTables_5(Board, Table, TeaToken, NewBoard).
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeatNumber, AI).
+
+checkSpecial(Board, Table, Seat, 4, TeaToken, NewBoard, NewSeatNumber, AI) :-
+	rotateTable_4(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+checkSpecial(Board, Table, Seat, 5, TeaToken, NewBoard, NewSeatNumber, AI) :-
+	rotateTable_4(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+checkSpecial(Board, Table, Seat, 6, TeaToken, NewBoard, NewSeatNumber, AI) :-
+	swapTables_4(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+checkSpecial(Board, Table, Seat, 7, TeaToken, NewBoard, NewSeatNumber, AI) :-
+	swapTables_5(Board, Table, TeaToken, NewBoard1, AI),
+	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+
+%fail case
+checkSpecial(Board, _, Seat, _, _, NewBoard, NewSeatNumber, _) :-
+	handleWaiter(Board, Seat, NewBoard, NewSeatNumber).
+
 % ------------------- END SPECIALS ------------------
 
-checkSpecial(Board, 0, _, _, NewBoard) :-
-	assignValue(Board, NewBoard).
+checkSpecials(Board, Table, Seat, TeaToken, NewBoard, NewSeatNumber, AI) :-
+	Table \= 0,
+	at(Specials, 9, Board),
+	Table1 is Table - 1,
+	at(Special, Table1, Specials),
+	checkSpecial(Board, Table, Seat, Special, TeaToken, NewBoard, NewSeatNumber, AI).
+
+checkSpecials(Board, 0, Seat, _, NewBoard, NewSeatNumber, AI) :-
+	handleWaiter(Board, Seat, NewBoard, NewSeatNumber),
+	write('Check Specials, New Seat Number = '), write(NewSeatNumber), nl.
 
 endCondition(Board) :- %  For player X
 	countMajorTables(Board, 8, 0, 'X', NewTotal),
@@ -68,16 +95,6 @@ endCondition(Board) :- %  For player O
 	countMajorTables(Board, 8, 0, 'O', NewTotal),
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
-
-checkSpecials(Board, Table, TeaToken, NewBoard) :-
-	Table \= 0,
-	at(Specials, 9, Board),
-	Table1 is Table - 1,
-	at(Special, Table1, Specials),
-	checkSpecial(Board, Table, Special, TeaToken, NewBoard).
-
-checkSpecials(Board, _, _, NewBoard) :-
-	assignValue(Board, NewBoard).
 
 gameLoop(_, _, Board) :-
 	endCondition(Board).
@@ -92,7 +109,6 @@ start :-
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
 	gameLoop(0, 0, NewBoard).
-
 
 %============================Counting Tables ================================
 

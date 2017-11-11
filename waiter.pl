@@ -1,7 +1,7 @@
 
 %place to put waiter is empty
 replaceByWaiter(BoardTable, SeatNumber, '.', NewBoardTable) :-
-	replace('#', SeatNumber, BoardTable, NewBoardTable).
+	replace('W', SeatNumber, BoardTable, NewBoardTable).
 %place to put waiter is with O tea
 replaceByWaiter(BoardTable, SeatNumber, 'O', NewBoardTable) :-
 	replace('@', SeatNumber, BoardTable, NewBoardTable).
@@ -11,7 +11,7 @@ replaceByWaiter(BoardTable, SeatNumber, 'X', NewBoardTable) :-
 replaceByWaiter(BoardTable, _, _, NewBoardTable) :-
 	assignValue(BoardTable, NewBoardTable).
 
-replaceByTea(BoardTable, SeatNumber, '#', NewBoardTable) :-
+replaceByTea(BoardTable, SeatNumber, 'W', NewBoardTable) :-
 	replace('.', SeatNumber, BoardTable, NewBoardTable).
 replaceByTea(BoardTable, SeatNumber, '@', NewBoardTable) :-
 	replace('O', SeatNumber, BoardTable, NewBoardTable).
@@ -37,7 +37,7 @@ eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
 
 eraseWaiter(Board, Index, -1, NewBoard) :-
 	at(Elem, Index, Board),
-	find('#', 0, WaiterIndex1, Elem),
+	find('W', 0, WaiterIndex1, Elem),
 	find('@', 0, WaiterIndex2, Elem),
 	find('%', 0, WaiterIndex3, Elem),
 	checkAndAssign(WaiterIndex1, WaiterIndex2, WaiterIndex3, WaiterIndex),
