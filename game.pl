@@ -45,9 +45,13 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn: '), nl,
 	play(Table, Seat, Board),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
+	write('After serve tea'), nl,
 	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeat),
+	write('After handleWaiter'), nl,
 	assignValue(NewSeat, NewTable),
+	write('After assignValue'), nl,
 	checkSpecials(NewBoard2, Table, TeaToken, NewBoard),
+	write('After checkSpecials'), nl,
 	drawBoard(NewBoard).
 
 %============================Counting Tables ================================
@@ -117,14 +121,15 @@ endCondition(Board) :- %  For player O
 	NewTotal > 4,
 	write('Congratulations Player O you have won.'), nl.
 
-checkSpecials(Board, 0, _, NewBoard) :-
-	assignValue(Board, NewBoard).
 checkSpecials(Board, Table, TeaToken, NewBoard) :-
 	Table \= 0,
 	at(Specials, 9, Board),
 	Table1 is Table - 1,
 	at(Special, Table1, Specials),
 	checkSpecial(Board, Table, Special, TeaToken, NewBoard).
+
+checkSpecials(Board, _, _, NewBoard) :-
+	assignValue(Board, NewBoard).
 
 gameLoop(_, _, Board) :-
 	endCondition(Board).
