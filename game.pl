@@ -2,11 +2,7 @@
 :-include('io.pl').
 :-include('specials.pl').
 :-include('create.pl').
-
-moveWaiter(Board, Table, Seat, NewBoard) :-
-	at(Elem, Table, Board),
-	replace('W', Seat, Elem, NewElem),
-	replace(NewElem, Table, Board, NewBoard).
+:-include('waiter.pl').
 
 play(Table, Seat, Board) :-
 	repeat,
@@ -20,61 +16,15 @@ serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	replace(TeaToken, Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-eraseWaiter(Board, Index, WaiterIndex, NewBoard) :-
-	Index >= 0,
-	WaiterIndex >= 0,
-	Index1 is Index-1,
-	at(Elem, Index1, Board),
-	replace('.', WaiterIndex, Elem, NewElem),
-	replace(NewElem, Index1, Board, NewBoard),
-	true. %Return
-
-%TODO waiter can be on top of tea, we need special tokens to symbolize that
-eraseWaiter(Board, Index, -1, NewBoard) :-
-	at(Elem, Index, Board),
-	find('W', 0, WaiterIndex, Elem),
-	Index1 is Index+1,
-	eraseWaiter(Board, Index1, WaiterIndex, NewBoard).
-
-handleWaiter(Board, Seat, NewBoard, NewSeat) :-
-	eraseWaiter(Board, 0, -1, NewBoard1),
-	moveWaiter(NewBoard1, Seat, Seat, NewBoard),
-	assignValue(Seat, NewSeat).
-
 turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 	write('Player '), write(TeaToken), write(' turn: '),
 	play(Table, Seat, Board),
 	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeat),
-	assignValue(NewSeat, NewTable),
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewTable),
 	checkSpecials(NewBoard2, Table, TeaToken, NewBoard),
 	drawBoard(NewBoard).
 
-%============================Counting Tables ================================
-
-countTokenTables(IsMajor,Total) :-
-	Total > 4,
-	IsMajor = 1.
-
-countTokenTables(IsMajor, Total) :-
-	Total =< 4,
-	IsMajor = 0.
-
-countMajorTables(_, Max, _, _) :-
-	Max < 0.
-
-countMajorTables(Board, Max, Total, Token, _) :-
-	Max >= 0,
-	at(Elem, Max, Board),
-	count(Elem, Token, TableTotal),
-	countTokenTables(IsMajor, TableTotal),
-	Total1 is Total + IsMajor,
-	Max1 is Max-1,
-	countMajorTables(Board, Max1, Total1, Token, Total1).
-
-%//============================Counting Tables ================================
-
-/* SPECIALS
+/*  ----------------- SPECIALS ----------------------
 	0 -> X Player move tea (XMT)
 	1 -> O Player move tea (OMT)
 	2 -> X Player move Waiter (XMW)
@@ -104,6 +54,7 @@ checkSpecial(Board, Table, 6, TeaToken, NewBoard) :-
 	swapTables_4(Board, Table, TeaToken, NewBoard).
 checkSpecial(Board, Table, 7, TeaToken, NewBoard) :-
 	swapTables_5(Board, Table, TeaToken, NewBoard).
+% ------------------- END SPECIALS ------------------
 
 checkSpecial(Board, 0, _, _, NewBoard) :-
 	assignValue(Board, NewBoard).
@@ -141,3 +92,28 @@ start :-
 	moveWaiter(Board, 0, 0, NewBoard),
 	drawBoard(NewBoard),
 	gameLoop(0, 0, NewBoard).
+
+
+%============================Counting Tables ================================
+
+countTokenTables(IsMajor,Total) :-
+	Total > 4,
+	IsMajor = 1.
+
+countTokenTables(IsMajor, Total) :-
+	Total =< 4,
+	IsMajor = 0.
+
+countMajorTables(_, Max, _, _) :-
+	Max < 0.
+
+countMajorTables(Board, Max, Total, Token, _) :-
+	Max >= 0,
+	at(Elem, Max, Board),
+	count(Elem, Token, TableTotal),
+	countTokenTables(IsMajor, TableTotal),
+	Total1 is Total + IsMajor,
+	Max1 is Max-1,
+	countMajorTables(Board, Max1, Total1, Token, Total1).
+
+%//============================Counting Tables ================================

@@ -31,7 +31,7 @@ moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat):-
 	Total > 3,
 
 	at(Elem, FromTable, Board),
-	find('W', 0, WaiterIndex, Elem),
+	find('#', 0, WaiterIndex, Elem),
 
 	write('Triggered: \'Move Waiter To Table\'!'), nl,
 	write('Insert table: '),

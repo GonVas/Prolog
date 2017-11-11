@@ -9,6 +9,13 @@ assignValue(V1, V2) :-
 	V1 \= V2,
 	assignValue(V1, V1).
 
+%checks if any of the values if different from -1 and returns it
+checkAndAssign(-1, -1, -1, -1).
+checkAndAssign(-1, -1, Value, Value).
+checkAndAssign(-1, Value, -1, Value).
+checkAndAssign(Value, -1, -1, Value).
+
+
 push(Elem, [], [Head|Tail]) :-
 	Head = Elem,
 	Tail = [].

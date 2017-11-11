@@ -12,7 +12,6 @@ createTables([], M, M).
 
 createTables([Head|Tail], 9, M) :-
 	M1 is M-2,
-	write('Creating '), write(M1), write(' specials'), nl,
 	assignSpecials(Head, 0, M1),
 	createTables(Tail, M, M).
 
