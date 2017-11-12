@@ -1,7 +1,7 @@
 moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 	at(CountTable, FromTable, Board),
 	countTokens(CountTable, TeaToken, Total),
-	Total > 2,
+	Total == 3,
 
 	write('Triggered: \'Move Tea To Table\'!'), nl,
 	write('Insert tea: '),
@@ -25,13 +25,11 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 
 	eraseTea(Board, FromTable, Seat, NewBoard1),
 	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard).
-moveOneToOther_3(Board,_,_,NewBoard, _):-
-	assignValue(Board, NewBoard).
 
 moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
 	at(CountTable, FromTable, Board),
 	countTokens(CountTable, TeaToken, Total),
-	Total > 3,
+	Total == 4,
 
 	at(Elem, FromTable, Board),
 	find('W', 0, WaiterIndex, Elem),
@@ -54,7 +52,7 @@ moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
 swapTables_5(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
 	at(CountTable, FromTableNumber, Board),
 	countTokens(CountTable, TeaToken, Total),
-	Total > 4,
+	Total == 5,
 
 	write('Triggered: \'Swap Claimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
@@ -65,8 +63,6 @@ swapTables_5(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
 
 	replace(FromTableData, ToTableNumber, Board, NewBoard1),
 	replace(ToTableData, FromTableNumber, NewBoard1, NewBoard).
-swapTables_5(Board, _, _, NewBoard, _) :-
-	assignValue(Board, NewBoard).
 
 swapTables_4(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
 	at(CountTable, FromTableNumber, Board),
@@ -82,13 +78,11 @@ swapTables_4(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
 
 	replace(FromTableData, ToTableNumber, Board, NewBoard1),
 	replace(ToTableData, FromTableNumber, NewBoard1, NewBoard).
-swapTables_4(Board, _, _, NewBoard, _) :-
-	assignValue(Board, NewBoard).
 
 rotateTable_4(Board, Table, TeaToken, NewBoard, AI) :-
 	at(TableElem, Table, Board),
 	countTokens(TableElem, TeaToken, Total),
-	Total==4,
+	Total == 4,
 
 	write('Triggered: \'Rotate Table\'!'), nl,
 	write('Insert number of counter-clockwise rotations: '),
@@ -97,8 +91,6 @@ rotateTable_4(Board, Table, TeaToken, NewBoard, AI) :-
 
 	applyRotation(TableElem, NRot, RotatedTable),
 	replace(RotatedTable, Table, Board, NewBoard).
-rotateTable_4(Board, _, _, NewBoard, _) :-
-	assignValue(Board, NewBoard).
 
 eraseTea(Board, TableNumber, SeatNumber, NewBoard) :-
 	at(BoardTable, TableNumber, Board),

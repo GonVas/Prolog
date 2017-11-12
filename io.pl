@@ -6,6 +6,7 @@ specToChar(4, 'ROT').
 specToChar(5, 'ROT').
 specToChar(6, 'SUU').
 specToChar(7, 'SCU').
+specToChar(8, 'XXX').
 
 %draws top seats
 drawST(L) :-

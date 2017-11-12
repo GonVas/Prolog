@@ -65,40 +65,56 @@ turn(TeaToken, CurrTableNumber, Board, NewBoard, NewTableNumber) :-
 checkSpecial(Board, Table, Seat, 0, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'X',
 	moveOneToOther_3(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 checkSpecial(Board, Table, Seat, 1, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'O',
 	moveOneToOther_3(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 checkSpecial(Board, Table, _, 	 2, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'X',
-	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeatNumber, AI).
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard1, NewSeatNumber, AI),
+	resetSpecial(NewBoard1, Table, NewBoard).
 
 checkSpecial(Board, Table, _, 	 3, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	TeaToken == 'O',
-	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard, NewSeatNumber, AI).
+	moveWaiterToOther_4(Board, Table, TeaToken, NewBoard1, NewSeatNumber, AI),
+	resetSpecial(NewBoard1, Table, NewBoard).
 
 checkSpecial(Board, Table, Seat, 4, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	rotateTable_4(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 checkSpecial(Board, Table, Seat, 5, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	rotateTable_4(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 checkSpecial(Board, Table, Seat, 6, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	swapTables_4(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 checkSpecial(Board, Table, Seat, 7, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	swapTables_5(Board, Table, TeaToken, NewBoard1, AI),
-	handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
+	handleWaiter(NewBoard1, Seat, NewBoard2, NewSeatNumber),
+	resetSpecial(NewBoard2, Table, NewBoard).
 
 %fail case
 checkSpecial(Board, _, Seat, _, _, NewBoard, NewSeatNumber, _) :-
 	handleWaiter(Board, Seat, NewBoard, NewSeatNumber).
+
+%TableNumber is the actual number, the corresponding special is at Table - 1
+resetSpecial(Board, TableNumber, NewBoard) :-
+	at(Specials, 9, Board),
+	TableSpecial is TableNumber - 1,
+	write('Resetting special at table: '), write(TableSpecial), nl,
+	replace(8, TableSpecial, Specials, NewSpecials),
+	replace(NewSpecials, 9, Board, NewBoard).
 
 % ------------------- END SPECIALS ------------------
 
@@ -110,8 +126,7 @@ checkSpecials(Board, Table, Seat, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	checkSpecial(Board, Table, Seat, Special, TeaToken, NewBoard, NewSeatNumber, AI).
 
 checkSpecials(Board, 0, Seat, _, NewBoard, NewSeatNumber, _) :-
-	handleWaiter(Board, Seat, NewBoard, NewSeatNumber),
-	write('Check Specials, New Seat Number = '), write(NewSeatNumber), nl.
+	handleWaiter(Board, Seat, NewBoard, NewSeatNumber).
 
 endCondition(Board, TeaToken) :- %  For player X
 	countMajorTables(Board, TeaToken, 0, 0, Total),
