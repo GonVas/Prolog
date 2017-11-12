@@ -6,6 +6,7 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 	write('Triggered: \'Move Tea To Table\'!'), nl,
 	write('Insert tea: '),
 	getNumberInput(Seat, 0, 8, AI),
+	(AI == 1 -> write(Seat), nl ; 1 == 1),
 
 	at(Elem1, FromTable, Board),
 	at(Token1, Seat, Elem1),
@@ -13,8 +14,10 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 
 	write('Write to table : '),
 	getNumberInput(ToTable, 0, 8, AI),
+	(AI == 1 -> write(ToTable), nl ; 1 == 1),
 	write('Write to seat : '),
 	getNumberInput(Seat2, 0, 8, AI),
+	(AI == 1 -> write(Seat2), nl ; 1 == 1),
 
 	at(Elem, ToTable, Board),
 	at(Token, Seat2, Elem),
@@ -22,7 +25,7 @@ moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 
 	eraseTea(Board, FromTable, Seat, NewBoard1),
 	serveTea(NewBoard1, ToTable, Seat2, TeaToken, NewBoard).
-moveOneToOther_3(Board,_,_,NewBoard, AI):-
+moveOneToOther_3(Board,_,_,NewBoard, _):-
 	assignValue(Board, NewBoard).
 
 moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
@@ -36,6 +39,7 @@ moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
 	write('Triggered: \'Move Waiter To Table\'!'), nl,
 	write('Insert table: '),
 	getNumberInput(ToTable, 0, 8, AI),
+	(AI == 1 -> write(ToTable), nl ; 1 == 1),
 
 	at(NewTable, ToTable, Board),
 	at(Token, WaiterIndex, NewTable),
@@ -47,38 +51,38 @@ moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
 	assignValue(ToTable, NewSeat),
 	write('NewSeat : '), write(NewSeat), nl.
 
-swapTables_5(Board, FromTable, TeaToken, NewBoard, AI) :-
-	at(CountTable, FromTable, Board),
+swapTables_5(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
+	at(CountTable, FromTableNumber, Board),
 	countTokens(CountTable, TeaToken, Total),
-	write('Total is = '), write(Total), nl,
 	Total > 4,
 
 	write('Triggered: \'Swap Claimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
-	getUnclaimedTable(Board, ToTable, AI),
-	at(FromTableData, FromTable, Board),
-	at(ToTableData, ToTable, Board),
+	getUnclaimedTable(Board, ToTableNumber, AI),
+	(AI == 1 -> write(ToTableNumber), nl ; 1 == 1),
+	at(FromTableData, FromTableNumber, Board),
+	at(ToTableData, ToTableNumber, Board),
 
-	replace(FromTableData, ToTable, Board, NewBoard1),
-	replace(ToTableData, FromTable, NewBoard1, NewBoard).
-swapTables_5(Board, _, _, NewBoard, AI) :-
+	replace(FromTableData, ToTableNumber, Board, NewBoard1),
+	replace(ToTableData, FromTableNumber, NewBoard1, NewBoard).
+swapTables_5(Board, _, _, NewBoard, _) :-
 	assignValue(Board, NewBoard).
 
-swapTables_4(Board, FromTable, TeaToken, NewBoard, AI) :-
-	at(CountTable, FromTable, Board),
+swapTables_4(Board, FromTableNumber, TeaToken, NewBoard, AI) :-
+	at(CountTable, FromTableNumber, Board),
 	countTokens(CountTable, TeaToken, Total),
-	write('Total is = '), write(Total), nl,
 	Total == 4,
 
 	write('Triggered: \'Swap Unclaimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
-	getUnclaimedTable(Board, ToTable, AI),
-	at(FromTableData, FromTable, Board),
-	at(ToTableData, ToTable, Board),
+	getUnclaimedTable(Board, ToTableNumber, AI),
+	(AI == 1 -> write(ToTableNumber), nl ; 1 == 1),
+	at(FromTableData, FromTableNumber, Board),
+	at(ToTableData, ToTableNumber, Board),
 
-	replace(FromTableData, ToTable, Board, NewBoard1),
-	replace(ToTableData, FromTable, NewBoard1, NewBoard).
-swapTables_4(Board, _, _, NewBoard, AI) :-
+	replace(FromTableData, ToTableNumber, Board, NewBoard1),
+	replace(ToTableData, FromTableNumber, NewBoard1, NewBoard).
+swapTables_4(Board, _, _, NewBoard, _) :-
 	assignValue(Board, NewBoard).
 
 rotateTable_4(Board, Table, TeaToken, NewBoard, AI) :-
@@ -89,10 +93,11 @@ rotateTable_4(Board, Table, TeaToken, NewBoard, AI) :-
 	write('Triggered: \'Rotate Table\'!'), nl,
 	write('Insert number of counter-clockwise rotations: '),
 	getNumberInput(NRot, 0, 7, AI),
+	(AI == 1 -> write(NRot), nl ; 1 == 1),
 
 	applyRotation(TableElem, NRot, RotatedTable),
 	replace(RotatedTable, Table, Board, NewBoard).
-rotateTable_4(Board, _, _, NewBoard, AI) :-
+rotateTable_4(Board, _, _, NewBoard, _) :-
 	assignValue(Board, NewBoard).
 
 eraseTea(Board, TableNumber, SeatNumber, NewBoard) :-
