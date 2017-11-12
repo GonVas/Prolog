@@ -182,7 +182,8 @@ mainCliMenu :-
 getNumberInput(Input, Min, Max, 0) :-
 	getNumberInput(Input, Min, Max).
 getNumberInput(Input, Min, Max, 1) :-
-	random(0, 9, Input).
+	Max1 is Max + 1,
+	random(Min, Max1, Input).
 
 %Gets a number from user that must be within [Min, Max]
 getNumberInput(Input, Min, Max) :-
@@ -197,11 +198,11 @@ getNumberInput(Input, Min, Max) :-
 
 %asks for an unclaimed table
 % AI == 1 is it is an AI
-getUnclaimedTable(Board, BoardTable, AI) :-
+getUnclaimedTable(Board, TableNumber, AI) :-
 	write('Input an unclaimed table: '),
 	repeat,
-		getNumberInput(Table, 0, 8, AI),
-		at(BoardTable, Table, Board),
+		getNumberInput(TableNumber, 0, 8, AI),
+		at(BoardTable, TableNumber, Board),
 		count(BoardTable, 'O', TempO1),
 		count(BoardTable, '@', TempO2),
 		TotalO is TempO1 + TempO2,
