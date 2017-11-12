@@ -7,25 +7,49 @@
 :-use_module(library(system)).
 
 
-play(Table, Seat, Board) :-
+normalPlay(TableNumber, SeatNumber, TeaToken, Board) :-
+	write('Player '), write(TeaToken), write(' turn: '),
 	repeat,
-		getNumberInput(Seat, 0, 8),
-		at(Elem, Table, Board),
-		at(Token, Seat, Elem),
+		getNumberInput(SeatNumber, 0, 8),
+		at(Elem, TableNumber, Board),
+		at(Token, SeatNumber, Elem),
 		Token == '.'.
+
+endPlay(SeatNumber, TeaToken, Board) :-
+	write('Player '), write(TeaToken),
+	write('Targetted table full!'), nl,
+	repeat,
+		write('Insert table: '),
+		getNumberInput(TableNumber, 0, 8), nl,
+		at(BoardTable, TableNumber, Board),
+		find('.', 0, Index, BoardTable),
+		Index \= -1,
+		repeat,
+			write('Insert seat: '),
+			getNumberInput(SeatNumber, 0, 8), nl,
+			at(SeatToken, SeatNumber, BoardTable),
+			SeatToken == '.'.
+
+play(TableNumber, SeatNumber, TeaToken, Board) :-
+	at(BoardTable, TableNumber, Board),
+	find('.', 0, FreeIndex, BoardTable),
+	(
+	FreeIndex \= -1 ->
+		normalPlay(TableNumber, SeatNumber, TeaToken, Board)
+		;
+		endPlay(SeatNumber, TeaToken, Board)
+	).
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	at(Elem, Table, Board),
 	replace(TeaToken, Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-turn(TeaToken, Table, Board, NewBoard, NewTable) :-
-	write('Player '), write(TeaToken), write(' turn: '),
-	play(Table, Seat, Board),
-	serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-	checkSpecials(NewBoard1, Table, Seat, TeaToken, NewBoard, NewTable, 0),
+turn(TeaToken, TableNumber, Board, NewBoard, NewTableNumber) :-
+	play(TableNumber, SeatNumber, TeaToken, Board),
+	serveTea(Board, TableNumber, SeatNumber, TeaToken, NewBoard1),
+	checkSpecials(NewBoard1, TableNumber, SeatNumber, TeaToken, NewBoard, NewTableNumber, 0),
 	drawBoard(NewBoard).
-
 
 /*  ----------------- SPECIALS ----------------------
 	0 -> X Player move tea (XMT)
@@ -84,40 +108,33 @@ checkSpecials(Board, Table, Seat, TeaToken, NewBoard, NewSeatNumber, AI) :-
 	at(Special, Table1, Specials),
 	checkSpecial(Board, Table, Seat, Special, TeaToken, NewBoard, NewSeatNumber, AI).
 
-checkSpecials(Board, 0, Seat, _, NewBoard, NewSeatNumber, AI) :-
+checkSpecials(Board, 0, Seat, _, NewBoard, NewSeatNumber, _) :-
 	handleWaiter(Board, Seat, NewBoard, NewSeatNumber),
 	write('Check Specials, New Seat Number = '), write(NewSeatNumber), nl.
 
-endCondition(Board) :- %  For player X
-	countMajorTables(Board, 8, 0, 'X', NewTotal),
-	NewTotal > 4,
-	write('Congratulations Player X you have won.'), nl.
+endCondition(Board, TeaToken) :- %  For player X
+	countMajorTables(Board, TeaToken, 0, 0, Total),
+	Total > 4,
+	write('Congratulations Player'), write(TeaToken), write(' you have won.'), nl,
+	halt.
 
-endCondition(Board) :- %  For player O
-	countMajorTables(Board, 8, 0, 'O', NewTotal),
-	NewTotal > 4,
-	write('Congratulations Player O you have won.'), nl.
-
-gameLoop(_, _, Board, _) :-
-	endCondition(Board).
 gameLoop(End, Table, Board, 0) :- % Human Version
-	% repeat,
 	turn('X', Table, Board, NewBoard1, NewTable),
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
 	gameLoop(End, NewTable1, NewBoard2, 0).
 
 gameLoop(End, Table, Board, 1) :- % Ai Version human becomes 'X'
-  % repeat,
   turn('X', Table, Board, NewBoard1, NewTable),
   aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
   gameLoop(End, NewTable1, NewBoard2, 1).
 
 gameLoop(End, Table, Board, 2) :- % AI vs AI Version
-  % repeat,
   aiTurn('X', Table, Board, NewBoard1, NewTable),
-  % sleep(2),
+	\+ endCondition(NewBoard1, 'X'),
+  sleep(2),
   aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
-  % sleep(2),
+	\+ endCondition(NewBoard2, 'O'),
+  sleep(2),
   gameLoop(End, NewTable1, NewBoard2, 2).
 
 start(AI) :-
@@ -144,32 +161,42 @@ startMenu :-
 	getNumberInput(Option, 1, 3),
 	(
 		Option = 1 -> clearScreen, playMenu, startMenu;
-		Option = 2 -> clearScreen, printInfoMenu, get_code(Char), startMenu
+		Option = 2 -> clearScreen, printInfoMenu, get_code(_), startMenu
 	).
 
 play :-
 	startMenu.
 
 %============================Counting Tables ================================
+xPiece('X',1).	oPiece('X', 0).
+xPiece('%',1).	oPiece('%', 0).
+xPiece('O',0).	oPiece('O', 1).
+xPiece('@',0).	oPiece('@', 1).
+xPiece('W',0).	oPiece('W', 0).
+xPiece('.',0).	oPiece('.', 0).
 
-countTokenTables(IsMajor,Total) :-
-	Total > 4,
-	IsMajor = 1.
+countTableTokens(_, _, 9, PreviousTotal, NewTotal) :-
+	NewTotal = PreviousTotal.
+countTableTokens(BoardTable, 'X', Index, PreviousTotal, NewTotal) :-
+	Index1 is Index+1,
+	at(Token, Index, BoardTable),
+	xPiece(Token, Inc),
+	NextTotal is PreviousTotal + Inc,
+	countTableTokens(BoardTable, 'X', Index1, NextTotal, NewTotal).
+countTableTokens(BoardTable, 'O', Index, PreviousTotal, NewTotal) :-
+	Index1 is Index+1,
+	at(Token, Index, BoardTable),
+	oPiece(Token, Inc),
+	NextTotal is PreviousTotal + Inc,
+	countTableTokens(BoardTable, 'O', Index1, NextTotal, NewTotal).
 
-countTokenTables(IsMajor, Total) :-
-	Total =< 4,
-	IsMajor = 0.
-
-countMajorTables(_, Max, _, _) :-
-	Max < 0.
-
-countMajorTables(Board, Max, Total, Token, _) :-
-	Max >= 0,
-	at(Elem, Max, Board),
-	count(Elem, Token, TableTotal),
-	countTokenTables(IsMajor, TableTotal),
-	Total1 is Total + IsMajor,
-	Max1 is Max-1,
-	countMajorTables(Board, Max1, Total1, Token, Total1).
+countMajorTables(_, _, 9, PreviousTotal, NewTotal) :-
+	NewTotal = PreviousTotal.
+countMajorTables(Board, TeaToken, Index, PreviousTotal, NewTotal) :-
+	Index1 is Index+1,
+	at(BoardTable, Index, Board),
+	countTableTokens(BoardTable, TeaToken, 0, 0, Total),
+	(Total > 4 -> NextTotal is PreviousTotal+1 ; NextTotal is PreviousTotal+0),
+	countMajorTables(Board, TeaToken, Index1, NextTotal, NewTotal).
 
 %//============================Counting Tables ================================

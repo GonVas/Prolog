@@ -20,7 +20,8 @@ createTables([H|T], N, M) :-
 	N \= 9,
 	N < M,
 	N1 is N+1,
-	createSeats(H,0,M),
+	M1 is M-1,
+	createSeats(H,0,M1),
 	createTables(T, N1, M).
 
 assignSpecials(Specials, Index, Size) :-

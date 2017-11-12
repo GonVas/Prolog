@@ -26,12 +26,12 @@ push(Elem, [Head|Tail], [NewHead|NewTail]) :-
 
 find(_, _, Start1, []) :-
 	Start1 = -1.
-find(Elem, Start, Start1, [Elem|_]) :-
+find(ElemToFind, Start, Start1, [ElemToFind|_]) :-
 	Start1 = Start.
-find(ElemToFind, Start, End, [_|Tail]) :-
-	End \== -1,
+find(ElemToFind, Start, Index, [_|Tail]) :-
+	Index \== -1,
 	Index1 is Start+1,
-	find(ElemToFind, Index1, End, Tail).
+	find(ElemToFind, Index1, Index, Tail).
 
 
 count([],_,0).
