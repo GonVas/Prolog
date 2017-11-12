@@ -153,7 +153,7 @@ startMenu :-
 
 play :-
 	startMenu.
-  
+
 %============================Counting Tables ================================
 
 countTokenTables(IsMajor,Total) :-
@@ -177,4 +177,3 @@ countMajorTables(Board, Max, Total, Token, _) :-
 	countMajorTables(Board, Max1, Total1, Token, Total1).
 
 %//============================Counting Tables ================================
-

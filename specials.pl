@@ -1,7 +1,7 @@
 moveOneToOther_3(Board, FromTable, TeaToken, NewBoard, AI):-
 	at(CountTable, FromTable, Board),
 	countTokens(CountTable, TeaToken, Total),
-	Total > 2,
+	Total == 3,
 
 	write('Triggered: \'Move Tea To Table\'!'), nl,
 	write('Insert tea: '),
@@ -28,7 +28,7 @@ moveOneToOther_3(Board,_,_,NewBoard, AI):-
 moveWaiterToOther_4(Board, FromTable, TeaToken, NewBoard, NewSeat, AI):-
 	at(CountTable, FromTable, Board),
 	countTokens(CountTable, TeaToken, Total),
-	Total > 3,
+	Total == 4,
 
 	at(Elem, FromTable, Board),
 	find('W', 0, WaiterIndex, Elem),
@@ -51,7 +51,7 @@ swapTables_5(Board, FromTable, TeaToken, NewBoard, AI) :-
 	at(CountTable, FromTable, Board),
 	countTokens(CountTable, TeaToken, Total),
 	write('Total is = '), write(Total), nl,
-	Total > 4,
+	Total == 5,
 
 	write('Triggered: \'Swap Claimed Table With Unclaimed\'!'), nl,
 	write('Insert table: '),
@@ -84,7 +84,7 @@ swapTables_4(Board, _, _, NewBoard, AI) :-
 rotateTable_4(Board, Table, TeaToken, NewBoard, AI) :-
 	at(TableElem, Table, Board),
 	countTokens(TableElem, TeaToken, Total),
-	Total==4,
+	Total == 4,
 
 	write('Triggered: \'Rotate Table\'!'), nl,
 	write('Insert number of counter-clockwise rotations: '),

@@ -51,13 +51,6 @@
 
 %************************************************************************************************
 %************************************************************************************************
-
-\newpage
-
-\section*{Summary}
-
-\newpage
-
 \tableofcontents
 
 %************************************************************************************************
@@ -76,8 +69,8 @@ We were assigned with the implementation of the strategy game Oolong in Prolog.
 It is interfaced over a terminal window and it was programmed in the recommended software,
  \textit{Sictus-Prolog}.
  \par
-We designed this project to be as real and faithfull representation of the real life counter-part and
-also to have a clean and pleasent interface
+We designed this project to be as real and faithful representation of the real life counter-part and
+also to have a clean and pleasant interface
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -93,8 +86,7 @@ house​ ​and​ ​therefore​ ​the​ ​game.
 The board is comprised of 9 tables, each has 9 seats where the game tokens are played.
 The arrangement of the tables should be similar to the layout of the seats of the tables. This way
 each seat is like a map for the overall playing area, with each table corresponding to a seat
-location. The easiest setup is the one below on the left, and for easier picturing the arrangement
-of the board a compass is regularly used.
+location. For easier setup and game play the different tables should be arranged in such a way that resembles a compass.
 
 \subsection{Playing​ ​the​ ​Game}
 The player with the black tokens goes first, and since the waiter begins on the center table
@@ -110,8 +102,7 @@ the waiter shall be moved accordingly. Below is depicted the actions that occur 
 Every tea serving is directed as follows: The space on which tea is served indicates the
 table where the next player shall serve their next tea. For example, if John serves the first tea of
 the game on the N seat of the center table, Sarah must serve her tea on an empty space of the N
-table. However Sarah may not redirect John to play again on the same tile he was on, and as such
-may not serve tea on the corresponding (center) seat.
+table.
 
 \subsection{The​ ​Waiter}
 To more easily track where the next player must play, the Waiter pawn is moved
@@ -173,7 +164,7 @@ element at the array in the position (3,3) represents the North seat at the Nort
 \centering
 \minipage[t]{0.25\textwidth}
   \includegraphics[width=\linewidth]{gameboard.png}
-  \caption{Table Representaion.}\label{fig:table_rep}
+  \caption{Table Representation.}\label{fig:table_rep}
 \endminipage\hfill
 \end{figure}
 
@@ -210,8 +201,10 @@ createTables([H|T], N, M) :-
 
 \end{listing}
 \newpage
-The specials Actions are randomly atributed to each table and at the end of list of seats, so each table
-has a length of 10, 9 seats plus a special action, assigned at the beggining of the game.
+The specials Actions are randomly attributed to each table. These are stored in a separate array from the tables,
+this array is the last element of the regularly used Board variable. It is an array of 8 elements, each position
+representing a table, starting from table 1 since table 0 has no special. Therefore the special present at index 0
+is associated with the table 1, special at index 1 to table 2 and so forth.
 
 \renewcommand\listingscaption{Code}
 
@@ -242,8 +235,9 @@ When the conditions for each special action are met the special action triggers 
 
 \subsection{Board Visualization}
 
-We have associated the character 'O' with an empty space to resemble the physical board
-game. The black pieces have the 'B', the green pieces a 'G' and the waiter a 'W'.
+We have associated the character '.' with an empty space, 'X' and 'O' characters represent the two different players.
+Furthermore the waiter when in an empty space is represented with a 'W', when it is on top of a 'X' token it is represented
+with a '\%' and on top of a 'O' with a '@'.
 
 
 \begin{figure}[H]
@@ -275,7 +269,7 @@ List of abbreviations and corresponding action: \vspace{1mm}
 In order to correctly decide and implement plays and turns we used many board evaluation rules the most basic and simple are:
 
         \begin{listing}[H]
-            \caption{At predicative for acessing tables and seats.}
+            \caption{At predicative for accessing tables and seats.}
             \label{Codigo:cod_at}
             \begin{minted}{prolog}
 at(Elem,0,[Elem|_]).
@@ -326,7 +320,7 @@ count([Head|Tail], Elem, Total) :-
 
 
 These are used by many parts of the game, they are what we would call low level.
-More complicated and higher level ones are used for trigering specials moves and determining tables
+More complicated and higher level ones are used for triggering specials moves and determining tables
 with a majority of token we have the following:
 
         \begin{listing}[H]
@@ -365,12 +359,12 @@ countMajorTables(Board, Max, Total, Token, _) :-
 
 
 With all of these we were able to implement most of the game's logic. From determining a valid move,
-to check if a special move can be ativated or if the game has ended.
+to check if a special move can be activated or if the game has ended.
 
 
 \subsection{Turns}
 
-The gameloop will each turn evaluate the predicate \textit{turn(+TeaToken, +Table, +Board, -NewBoard, -NewTable)}
+The game loop will each turn evaluate the predicate \textit{turn(+TeaToken, +Table, +Board, -NewBoard, -NewTable)}
  which will ask the player for a seat validate it and change the Board accordingly, will also check and trigger any special moves.
   After this the board will be displayed
   and the other player will have its turn.
@@ -392,7 +386,7 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
 
 
 \subsection{End Game Verification}
- Each gameloop iteration the predicative \textit{endCondition} will be evaluated. It will check for 5 tables being owned by the same Player. If this condition is met it will
+ Each game loop iteration the predicative \textit{endCondition} will be evaluated. It will check for 5 tables being owned by the same Player. If this condition is met it will
   display a message saying who won the game.
 
 \renewcommand\listingscaption{Code}
@@ -416,8 +410,8 @@ endCondition(Board) :- %  For player O
 \end{listing}
 
 \subsection{AI}
-    When the AI is playing the gameloop will call the predicative \textit{aiTurn} which will in turn get a valid play
-    from the predicative \textit{generateValidPlay} and play it. The move is randomly choosen.
+    When the AI is playing the game loop will call the predicative \textit{aiTurn} which will in turn get a valid play
+    from the predicative \textit{generateValidPlay} and play it. The move is randomly chosen.
 
 \begin{listing}[H]
     \caption{Predicative for generating a AI turn.}
@@ -480,7 +474,7 @@ It's a combination of 3 menus and the game interface.
 \section{Conclusion}
 When we started this project we had very basic knowledge about logic programming and Prolog and at times
 it was challenging to shift to a completely different style of programming and problem solving.
-Nevertheless after overcomming alot of difficulties and completing this game we came to the realization
+Nevertheless after overcoming plenty of difficulties and completing this game we came to the realization
 that logic programming does have its advantages and use cases, especially when it comes to strategy games.
 \par
 When it comes to the state of the final game, there are some improvements that could be made the AI could be better,
