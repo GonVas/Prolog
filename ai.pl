@@ -2,7 +2,7 @@
 aiNormalPlay(TableNumber, SeatNumber, Board) :-
 	at(BoardTable, TableNumber, Board),
 	repeat,
-		getNumberInput(SeatNumber, 0, 8, 1),
+		getNumberInput(SeatNumber, 0, 8, 1), % returns random number
 		at(Token, SeatNumber, BoardTable),
 		Token == '.',
 	write(SeatNumber), nl.
@@ -11,7 +11,7 @@ aiEndPlay(TableNumber, SeatNumber, Board) :-
 	write('Targetted table full!'), nl,
 	write('Insert table: '),
 	repeat,
-		getNumberInput(TableNumber, 0, 8, 1),
+		getNumberInput(TableNumber, 0, 8, 1), % returns random number
 		at(BoardTable, TableNumber, Board),
 		find('.', 0, Index, BoardTable),
 		Index \= -1,
