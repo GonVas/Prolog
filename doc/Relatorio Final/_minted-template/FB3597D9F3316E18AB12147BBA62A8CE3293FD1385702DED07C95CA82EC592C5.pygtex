@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{turn}\PYG{p}{(}\PYG{n+nv}{TeaToken}\PYG{p}{,} \PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{Board}\PYG{p}{,} \PYG{n+nv}{NewBoard}\PYG{p}{,} \PYG{n+nv}{NewTable}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nf}{write}\PYG{p}{(}\PYG{l+s+sAtom}{\PYGZsq{}Player \PYGZsq{}}\PYG{p}{),} \PYG{n+nf}{write}\PYG{p}{(}\PYG{n+nv}{TeaToken}\PYG{p}{),} \PYG{n+nf}{write}\PYG{p}{(}\PYG{l+s+sAtom}{\PYGZsq{} turn: \PYGZsq{}}\PYG{p}{),}
+    \PYG{n+nf}{play}\PYG{p}{(}\PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{Seat}\PYG{p}{,} \PYG{n+nv}{Board}\PYG{p}{),}
+    \PYG{n+nf}{serveTea}\PYG{p}{(}\PYG{n+nv}{Board}\PYG{p}{,} \PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{Seat}\PYG{p}{,} \PYG{n+nv}{TeaToken}\PYG{p}{,} \PYG{n+nv}{NewBoard1}\PYG{p}{),}
+    \PYG{n+nf}{checkSpecials}\PYG{p}{(}\PYG{n+nv}{NewBoard1}\PYG{p}{,} \PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{Seat}\PYG{p}{,} \PYG{n+nv}{TeaToken}\PYG{p}{,} \PYG{n+nv}{NewBoard}\PYG{p}{,} \PYG{n+nv}{NewTable}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),}
+    \PYG{n+nf}{drawBoard}\PYG{p}{(}\PYG{n+nv}{NewBoard}\PYG{p}{).}
+\end{Verbatim}

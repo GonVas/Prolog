@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{at}\PYG{p}{(}\PYG{n+nv}{Elem}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,[}\PYG{n+nv}{Elem}\PYG{p}{|}\PYG{k}{\PYGZus{}}\PYG{p}{]).}
+\PYG{n+nf}{at}\PYG{p}{(}\PYG{n+nv}{Elem}\PYG{p}{,}\PYG{n+nv}{Index}\PYG{p}{,[}\PYG{k}{\PYGZus{}}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{])} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{Index1} \PYG{o}{is} \PYG{n+nv}{Index} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{n+nv}{Index} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{,}
+\PYG{n+nf}{at}\PYG{p}{(}\PYG{n+nv}{Elem}\PYG{p}{,}\PYG{n+nv}{Index1}\PYG{p}{,}\PYG{n+nv}{Tail}\PYG{p}{).}
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{count}\PYG{p}{([],}\PYG{k}{\PYGZus{}}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{).}
+\PYG{n+nf}{count}\PYG{p}{([}\PYG{n+nv}{Head}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{],} \PYG{n+nv}{Head}\PYG{p}{,} \PYG{n+nv}{Total}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nf}{count}\PYG{p}{(}\PYG{n+nv}{Tail}\PYG{p}{,} \PYG{n+nv}{Head}\PYG{p}{,} \PYG{n+nv}{Total1}\PYG{p}{),}
+    \PYG{n+nv}{Total} \PYG{o}{is} \PYG{l+m+mi}{1}\PYG{o}{+}\PYG{n+nv}{Total1}\PYG{p}{.}
+\PYG{n+nf}{count}\PYG{p}{([}\PYG{n+nv}{Head}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{],} \PYG{n+nv}{Elem}\PYG{p}{,} \PYG{n+nv}{Total}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{Head} \PYG{l+s+sAtom}{\PYGZbs{}=} \PYG{n+nv}{Elem}\PYG{p}{,}
+    \PYG{n+nf}{count}\PYG{p}{(}\PYG{n+nv}{Tail}\PYG{p}{,} \PYG{n+nv}{Elem}\PYG{p}{,} \PYG{n+nv}{Total}\PYG{p}{).}
+\end{Verbatim}
