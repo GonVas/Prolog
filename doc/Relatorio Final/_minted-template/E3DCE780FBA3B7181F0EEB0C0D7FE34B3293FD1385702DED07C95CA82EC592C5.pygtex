@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{checkSpecial}\PYG{p}{(}\PYG{n+nv}{Board}\PYG{p}{,} \PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{Seat}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nv}{TeaToken}\PYG{p}{,} \PYG{n+nv}{NewBoard}\PYG{p}{,} \PYG{n+nv}{NewSeatNumber}\PYG{p}{,} \PYG{n+nv}{AI}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{TeaToken} \PYG{o}{==} \PYG{l+s+sAtom}{\PYGZsq{}X\PYGZsq{}}\PYG{p}{,}
+    \PYG{n+nf}{moveOneToOther\PYGZus{}3}\PYG{p}{(}\PYG{n+nv}{Board}\PYG{p}{,} \PYG{n+nv}{Table}\PYG{p}{,} \PYG{n+nv}{TeaToken}\PYG{p}{,} \PYG{n+nv}{NewBoard1}\PYG{p}{,} \PYG{n+nv}{AI}\PYG{p}{),}
+    \PYG{n+nf}{handleWaiter}\PYG{p}{(}\PYG{n+nv}{NewBoard1}\PYG{p}{,} \PYG{n+nv}{Seat}\PYG{p}{,} \PYG{n+nv}{NewBoard}\PYG{p}{,} \PYG{n+nv}{NewSeatNumber}\PYG{p}{).}
+\end{Verbatim}

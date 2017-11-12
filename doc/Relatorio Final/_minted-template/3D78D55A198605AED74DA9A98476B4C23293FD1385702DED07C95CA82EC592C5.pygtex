@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{assignSpecials}\PYG{p}{(}\PYG{n+nv}{Specials}\PYG{p}{,} \PYG{n+nv}{Index}\PYG{p}{,} \PYG{n+nv}{Size}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nf}{assignSpecials}\PYG{p}{(}\PYG{n+nv}{Specials}\PYG{p}{,} \PYG{n+nv}{Index}\PYG{p}{,} \PYG{n+nv}{Size}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{p}{).}
+
+\PYG{n+nf}{assignSpecials}\PYG{p}{([],} \PYG{n+nv}{Index}\PYG{p}{,} \PYG{n+nv}{Index}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{p}{).}
+\PYG{n+nf}{assignSpecials}\PYG{p}{([}\PYG{n+nv}{Head}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{],} \PYG{n+nv}{Index}\PYG{p}{,} \PYG{n+nv}{End}\PYG{p}{,} \PYG{n+nv}{SpecialsCopy}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{Index} \PYG{o}{\PYGZlt{}} \PYG{n+nv}{End}\PYG{p}{,}
+    \PYG{n+nv}{Index1} \PYG{o}{is} \PYG{n+nv}{Index}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{l+s+sAtom}{repeat}\PYG{p}{,} \PYG{c+c1}{\PYGZpc{}repeat until a new random is generated}
+        \PYG{n+nf}{random}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nv}{End}\PYG{p}{,} \PYG{n+nv}{Special}\PYG{p}{),}
+        \PYG{p}{(}\PYG{n+nv}{Index} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{p}{;} \PYG{l+s+sAtom}{\PYGZbs{}+} \PYG{n+nf}{member}\PYG{p}{(}\PYG{n+nv}{Special}\PYG{p}{,} \PYG{n+nv}{SpecialsCopy}\PYG{p}{)),}
+
+    \PYG{n+nf}{push}\PYG{p}{(}\PYG{n+nv}{Special}\PYG{p}{,} \PYG{n+nv}{SpecialsCopy}\PYG{p}{,} \PYG{n+nv}{NewSpecials}\PYG{p}{),}
+    \PYG{n+nv}{Head} \PYG{o}{=} \PYG{n+nv}{Special}\PYG{p}{,}
+    \PYG{n+nf}{assignSpecials}\PYG{p}{(}\PYG{n+nv}{Tail}\PYG{p}{,} \PYG{n+nv}{Index1}\PYG{p}{,} \PYG{n+nv}{End}\PYG{p}{,} \PYG{n+nv}{NewSpecials}\PYG{p}{).}
+\end{Verbatim}

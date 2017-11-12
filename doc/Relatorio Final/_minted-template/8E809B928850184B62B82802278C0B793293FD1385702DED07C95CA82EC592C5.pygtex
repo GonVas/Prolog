@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{createSeats}\PYG{p}{([],} \PYG{n+nv}{M}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{).}      \PYG{c+c1}{\PYGZpc{}Stop if 2nd args = 3rd arg meaning max elems reached}
+\PYG{c+c1}{\PYGZpc{}Creates the seats of a table}
+\PYG{n+nf}{createSeats}\PYG{p}{([}\PYG{n+nv}{H}\PYG{p}{|}\PYG{n+nv}{T}\PYG{p}{],} \PYG{n+nv}{N}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{N} \PYG{o}{\PYGZlt{}} \PYG{n+nv}{M}\PYG{p}{,}                                  \PYG{c+c1}{\PYGZpc{}add elements until max elements is reached}
+    \PYG{n+nv}{N1} \PYG{o}{is} \PYG{n+nv}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}                          \PYG{c+c1}{\PYGZpc{}keep track of added element}
+    \PYG{n+nv}{H} \PYG{o}{=} \PYG{l+s+sAtom}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{,}                                \PYG{c+c1}{\PYGZpc{}element to add}
+    \PYG{n+nf}{createSeats}\PYG{p}{(}\PYG{n+nv}{T}\PYG{p}{,}\PYG{n+nv}{N1}\PYG{p}{,}\PYG{n+nv}{M}\PYG{p}{).}    \PYG{c+c1}{\PYGZpc{}recursive call}
+
+\PYG{n+nf}{createTables}\PYG{p}{([],} \PYG{n+nv}{M}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{).}
+
+\PYG{n+nf}{createTables}\PYG{p}{([}\PYG{n+nv}{Head}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{],} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{M1} \PYG{o}{is} \PYG{n+nv}{M}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}
+    \PYG{n+nf}{assignSpecials}\PYG{p}{(}\PYG{n+nv}{Head}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nv}{M1}\PYG{p}{),}
+    \PYG{n+nf}{createTables}\PYG{p}{(}\PYG{n+nv}{Tail}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{).}
+
+\PYG{c+c1}{\PYGZpc{}Creates the tables of the game}
+\PYG{n+nf}{createTables}\PYG{p}{([}\PYG{n+nv}{H}\PYG{p}{|}\PYG{n+nv}{T}\PYG{p}{],} \PYG{n+nv}{N}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{)} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{N} \PYG{l+s+sAtom}{\PYGZbs{}=} \PYG{l+m+mi}{9}\PYG{p}{,}
+    \PYG{n+nv}{N} \PYG{o}{\PYGZlt{}} \PYG{n+nv}{M}\PYG{p}{,}
+    \PYG{n+nv}{N1} \PYG{o}{is} \PYG{n+nv}{N}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{n+nf}{createSeats}\PYG{p}{(}\PYG{n+nv}{H}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n+nv}{M}\PYG{p}{),}
+    \PYG{n+nf}{createTables}\PYG{p}{(}\PYG{n+nv}{T}\PYG{p}{,} \PYG{n+nv}{N1}\PYG{p}{,} \PYG{n+nv}{M}\PYG{p}{).}
+\end{Verbatim}

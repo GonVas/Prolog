@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{find}\PYG{p}{(}\PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{k}{\PYGZus{}}\PYG{p}{,} \PYG{n+nv}{Start1}\PYG{p}{,} \PYG{p}{[])} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{Start1} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.}
+\PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nv}{Elem}\PYG{p}{,} \PYG{n+nv}{Start}\PYG{p}{,} \PYG{n+nv}{Start1}\PYG{p}{,} \PYG{p}{[}\PYG{n+nv}{Elem}\PYG{p}{|}\PYG{k}{\PYGZus{}}\PYG{p}{])} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{Start1} \PYG{o}{=} \PYG{n+nv}{Start}\PYG{p}{.}
+\PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nv}{ElemToFind}\PYG{p}{,} \PYG{n+nv}{Start}\PYG{p}{,} \PYG{n+nv}{End}\PYG{p}{,} \PYG{p}{[}\PYG{k}{\PYGZus{}}\PYG{p}{|}\PYG{n+nv}{Tail}\PYG{p}{])} \PYG{p}{:\PYGZhy{}}
+    \PYG{n+nv}{End} \PYG{l+s+sAtom}{\PYGZbs{}==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{n+nv}{Index1} \PYG{o}{is} \PYG{n+nv}{Start}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,}
+    \PYG{n+nf}{find}\PYG{p}{(}\PYG{n+nv}{ElemToFind}\PYG{p}{,} \PYG{n+nv}{Index1}\PYG{p}{,} \PYG{n+nv}{End}\PYG{p}{,} \PYG{n+nv}{Tail}\PYG{p}{).}
+\end{Verbatim}
