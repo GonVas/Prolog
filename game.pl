@@ -9,35 +9,36 @@
 
 normalPlay(TableNumber, SeatNumber, TeaToken, Board) :-
 	write('Player '), write(TeaToken), write(' turn: '),
+	at(BoardTable, TableNumber, Board),
 	repeat,
 		getNumberInput(SeatNumber, 0, 8),
-		at(Elem, TableNumber, Board),
-		at(Token, SeatNumber, Elem),
+		at(Token, SeatNumber, BoardTable),
 		Token == '.'.
 
-endPlay(SeatNumber, TeaToken, Board) :-
+endPlay(NewTableNumber, SeatNumber, TeaToken, Board) :-
 	write('Player '), write(TeaToken),
 	write('Targetted table full!'), nl,
+	write('Insert table: '),
 	repeat,
-		write('Insert table: '),
-		getNumberInput(TableNumber, 0, 8), nl,
-		at(BoardTable, TableNumber, Board),
+		getNumberInput(NewTableNumber, 0, 8), nl,
+		at(BoardTable, NewTableNumber, Board),
 		find('.', 0, Index, BoardTable),
 		Index \= -1,
-		repeat,
-			write('Insert seat: '),
-			getNumberInput(SeatNumber, 0, 8), nl,
-			at(SeatToken, SeatNumber, BoardTable),
-			SeatToken == '.'.
 
-play(TableNumber, SeatNumber, TeaToken, Board) :-
-	at(BoardTable, TableNumber, Board),
+	write('Insert seat: '),
+	repeat,
+		getNumberInput(SeatNumber, 0, 8), nl,
+		at(SeatToken, SeatNumber, BoardTable),
+		SeatToken == '.'.
+
+play(CurrTableNumber, NewTableNumber, SeatNumber, TeaToken, Board) :-
+	at(BoardTable, CurrTableNumber, Board),
 	find('.', 0, FreeIndex, BoardTable),
 	(
 	FreeIndex \= -1 ->
-		normalPlay(TableNumber, SeatNumber, TeaToken, Board)
+		normalPlay(CurrTableNumber, SeatNumber, TeaToken, Board), assignValue(CurrTableNumber, NewTableNumber)
 		;
-		endPlay(SeatNumber, TeaToken, Board)
+		endPlay(NewTableNumber, SeatNumber, TeaToken, Board)
 	).
 
 serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
@@ -45,10 +46,10 @@ serveTea(Board, Table, Seat, TeaToken, NewBoard) :-
 	replace(TeaToken, Seat, Elem, NewElem),
 	replace(NewElem, Table, Board, NewBoard).
 
-turn(TeaToken, TableNumber, Board, NewBoard, NewTableNumber) :-
-	play(TableNumber, SeatNumber, TeaToken, Board),
-	serveTea(Board, TableNumber, SeatNumber, TeaToken, NewBoard1),
-	checkSpecials(NewBoard1, TableNumber, SeatNumber, TeaToken, NewBoard, NewTableNumber, 0),
+turn(TeaToken, CurrTableNumber, Board, NewBoard, NewTableNumber) :-
+	play(CurrTableNumber, NewTableNumber1, SeatNumber, TeaToken, Board),
+	serveTea(Board, NewTableNumber1, SeatNumber, TeaToken, NewBoard1),
+	checkSpecials(NewBoard1, NewTableNumber1, SeatNumber, TeaToken, NewBoard, NewTableNumber, 0),
 	drawBoard(NewBoard).
 
 /*  ----------------- SPECIALS ----------------------
@@ -120,21 +121,25 @@ endCondition(Board, TeaToken) :- %  For player X
 
 gameLoop(End, Table, Board, 0) :- % Human Version
 	turn('X', Table, Board, NewBoard1, NewTable),
+	\+ endCondition(NewBoard1, 'X'),
 	turn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+	\+ endCondition(NewBoard2, 'O'),
 	gameLoop(End, NewTable1, NewBoard2, 0).
 
 gameLoop(End, Table, Board, 1) :- % Ai Version human becomes 'X'
   turn('X', Table, Board, NewBoard1, NewTable),
+	\+ endCondition(NewBoard1, 'X'),
   aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
+	\+ endCondition(NewBoard2, 'O'),
   gameLoop(End, NewTable1, NewBoard2, 1).
 
 gameLoop(End, Table, Board, 2) :- % AI vs AI Version
   aiTurn('X', Table, Board, NewBoard1, NewTable),
 	\+ endCondition(NewBoard1, 'X'),
-  sleep(2),
+  % sleep(2),
   aiTurn('O', NewTable, NewBoard1, NewBoard2, NewTable1),
 	\+ endCondition(NewBoard2, 'O'),
-  sleep(2),
+  % sleep(2),
   gameLoop(End, NewTable1, NewBoard2, 2).
 
 start(AI) :-
