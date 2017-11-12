@@ -50,6 +50,20 @@
 \thispagestyle{empty}
 
 %************************************************************************************************
+
+\newpage
+
+    \section{Abstract}
+    \normalsize
+
+Our project consists in the 2 player board game called Oolong in Prolog.
+ Throughout this report we will list and discuss the most important and
+ critical design decisions, often aided with code snippets, for correctly
+ implementing the game logic.
+\newpage
+
+
+
 %************************************************************************************************
 \tableofcontents
 
@@ -70,7 +84,7 @@ It is interfaced over a terminal window and it was programmed in the recommended
  \textit{Sictus-Prolog}.
  \par
 We designed this project to be as real and faithful representation of the real life counter-part and
-also to have a clean and pleasant interface
+also to have a clean and pleasant interface.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -194,7 +208,8 @@ createTables([H|T], N, M) :-
     N \= 9,
     N < M,
     N1 is N+1,
-    createSeats(H,0,M),
+    M1 is M-1,
+    createSeats(H,0,M1),
     createTables(T, N1, M).
 
 \end{minted}
@@ -332,6 +347,12 @@ checkSpecial(Board, Table, Seat, 0, TeaToken, NewBoard, NewSeatNumber, AI) :-
     moveOneToOther_3(Board, Table, TeaToken, NewBoard1, AI),
     handleWaiter(NewBoard1, Seat, NewBoard, NewSeatNumber).
 
+checkSpecials(Board, Table, Seat, TeaToken, NewBoard, NewSeatNumber, AI) :-
+    Table \= 0,
+    at(Specials, 9, Board),
+    Table1 is Table - 1,
+    at(Special, Table1, Specials),
+    checkSpecial(Board, Table, Seat, Special, TeaToken, NewBoard, NewSeatNumber, AI).
         \end{minted}
 
         \end{listing}
@@ -341,17 +362,14 @@ checkSpecial(Board, Table, Seat, 0, TeaToken, NewBoard, NewSeatNumber, AI) :-
         \label{Codigo:cod_major}
         \begin{minted}{prolog}
 
-countMajorTables(_, Max, _, _) :-
-    Max < 0.
-
-countMajorTables(Board, Max, Total, Token, _) :-
-    Max >= 0,
-    at(Elem, Max, Board),
-    count(Elem, Token, TableTotal),
-    countTokenTables(IsMajor, TableTotal),
-    Total1 is Total + IsMajor,
-    Max1 is Max-1,
-    countMajorTables(Board, Max1, Total1, Token, Total1).
+countMajorTables(_, _, 9, PreviousTotal, NewTotal) :-
+    NewTotal = PreviousTotal.
+countMajorTables(Board, TeaToken, Index, PreviousTotal, NewTotal) :-
+    Index1 is Index+1,
+    at(BoardTable, Index, Board),
+    countTableTokens(BoardTable, TeaToken, 0, 0, Total),
+    (Total > 4 -> NextTotal is PreviousTotal+1 ; NextTotal is PreviousTotal+0),
+    countMajorTables(Board, TeaToken, Index1, NextTotal, NewTotal).
 
         \end{minted}
 
@@ -373,11 +391,10 @@ The game loop will each turn evaluate the predicate \textit{turn(+TeaToken, +Tab
             \caption{Turn predicative.}
             \label{Codigo:cod_turn}
             \begin{minted}{prolog}
-turn(TeaToken, Table, Board, NewBoard, NewTable) :-
-    write('Player '), write(TeaToken), write(' turn: '),
-    play(Table, Seat, Board),
-    serveTea(Board, Table, Seat, TeaToken, NewBoard1),
-    checkSpecials(NewBoard1, Table, Seat, TeaToken, NewBoard, NewTable, 0),
+turn(TeaToken, CurrTableNumber, Board, NewBoard, NewTableNumber) :-
+    play(CurrTableNumber, NewTableNumber1, SeatNumber, TeaToken, Board),
+    serveTea(Board, NewTableNumber1, SeatNumber, TeaToken, NewBoard1),
+    checkSpecials(NewBoard1, NewTableNumber1, SeatNumber, TeaToken, NewBoard, NewTableNumber, 0),
     drawBoard(NewBoard).
 
     \end{minted}
@@ -395,43 +412,43 @@ turn(TeaToken, Table, Board, NewBoard, NewTable) :-
     \caption{End Game Verification.}
     \label{Codigo:cod_end}
     \begin{minted}{prolog}
-endCondition(Board) :- %  For player X
-    countMajorTables(Board, 8, 0, 'X', NewTotal),
-    NewTotal > 4,
-    write('Congratulations Player X you have won.'), nl.
-
-endCondition(Board) :- %  For player O
-    countMajorTables(Board, 8, 0, 'O', NewTotal),
-    NewTotal > 4,
-    write('Congratulations Player O you have won.'), nl.
+endCondition(Board, TeaToken) :- %  For player X
+    countMajorTables(Board, TeaToken, 0, 0, Total),
+    Total > 4,
+    write('Congratulations Player'), write(TeaToken), write(' you have won.'), nl,
+    halt.
 
 \end{minted}
 
 \end{listing}
 
 \subsection{AI}
-    When the AI is playing the game loop will call the predicative \textit{aiTurn} which will in turn get a valid play
-    from the predicative \textit{generateValidPlay} and play it. The move is randomly chosen.
+    When the AI is playing the game loop will call the predicative \textit{aiTurn} which will in turn get a valid seat
+    from the predicative \textit{aiPlay} and play it, if the table is full it will call \textit{aiEndPlay} that will also get a random table
+    .Both the table and seats are randomly choosen.
 
 \begin{listing}[H]
-    \caption{Predicative for generating a AI turn.}
+    \caption{Predicatives for generating a AI move.}
     \label{Codigo:cod_ai}
     \begin{minted}{prolog}
 
-generateValidPlay(TableNumber, SeatNumber, Board) :-
-    at(BoardTable, TableNumber, Board),
-    repeat,
-        random(0, 9, SeatNumber),
-        at(Token, SeatNumber, BoardTable),
-        Token == '.'.
+aiPlay(CurrTableNumber, NewTableNumber, SeatNumber, Board) :-
+    at(BoardTable, CurrTableNumber, Board),
+    find('.', 0, FreeIndex, BoardTable),
+    (
+    FreeIndex \= -1 ->
+        aiNormalPlay(CurrTableNumber, SeatNumber, Board), assignValue(CurrTableNumber, NewTableNumber)
+        % gets random seat
+        ;
+        aiEndPlay(NewTableNumber, SeatNumber, Board)
+        % gets random seat and table
+    ).
 
-aiTurn(TeaToken, TableNumber, Board, NewBoard, NewTableNumber) :-
+aiTurn(TeaToken, CurrTableNumber, Board, NewBoard, NewTableNumber) :-
     write('AI '), write(TeaToken), write(' turn:'),
-    generateValidPlay(TableNumber, SeatNumber, Board),
-    write(SeatNumber), nl,
-    serveTea(Board, TableNumber, SeatNumber, TeaToken, NewBoard1),
-    handleWaiter(NewBoard1, SeatNumber, NewBoard2, NewTableNumber),
-    checkSpecials(NewBoard2, TableNumber, SeatNumber,  TeaToken, NewBoard, NewSeatNumber2, 1),
+    aiPlay(CurrTableNumber, NewTableNumber1, SeatNumber, Board),
+    serveTea(Board, NewTableNumber1, SeatNumber, TeaToken, NewBoard1),
+    checkSpecials(NewBoard1, NewTableNumber1, SeatNumber,  TeaToken, NewBoard, NewTableNumber, 1),
     drawBoard(NewBoard).
 
 \end{minted}
@@ -468,7 +485,7 @@ It's a combination of 3 menus and the game interface.
      },emphstyle={\color{red}\bfseries\underbar}%
 }%
 
-
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
@@ -482,18 +499,25 @@ in its current state it only plays the game randomly. Also there are some code s
 mindset.
 
 
-
-
-
 \clearpage
+
+
+
+
+\iffalse %%%NOT USED
+
 \addcontentsline{toc}{section}{Bibliografia}
 \renewcommand\refname{Bibliografia}
 \bibliographystyle{plain}
 \bibliography{myrefs}
 
+
 \newpage
 \appendix
 \section{Game Code}
-Código Prolog implementado devidamente comentado e outros elementos úteis que não sejam essenciais ao relatório.
+
+\fi  %%%NOT USED
+
+
 
 \end{document}

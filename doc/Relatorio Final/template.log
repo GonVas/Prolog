@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.11.11)  12 NOV 2017 04:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdflatex 2017.11.11)  12 NOV 2017 16:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -909,7 +909,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 ...r <return> to continue without it.}Game}{4}
+l.5 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -925,7 +925,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 ...r <return> to continue without it.}Game}{4}
+l.5 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -941,7 +941,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 ...r <return> to continue without it.}Game}{4}
+l.5 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -957,13 +957,13 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.4 ...r <return> to continue without it.}Game}{4}
+l.5 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 4.
+(Font)              <7> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 4.
+(Font)              <5> on input line 5.
 
 ! Package inputenc Error: Unicode char \GenericError {(inputenc)               
  }{Package inputenc Error: Unicode char ​ (U+200B)
@@ -977,7 +977,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...r <return> to continue without it.}Game}{4}
+l.6 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -993,7 +993,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...r <return> to continue without it.}Game}{4}
+l.6 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -1009,7 +1009,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...r <return> to continue without it.}Game}{4}
+l.6 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -1025,7 +1025,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.5 ...r <return> to continue without it.}Game}{4}
+l.6 ...r <return> to continue without it.}Game}{4}
                                                   
 ? 
 
@@ -1041,7 +1041,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6 ...or <return> to continue without it.}Tea}{4}
+l.7 ...or <return> to continue without it.}Tea}{4}
                                                   
 ? 
 
@@ -1057,7 +1057,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6 ...or <return> to continue without it.}Tea}{4}
+l.7 ...or <return> to continue without it.}Tea}{4}
                                                   
 ? 
 
@@ -1073,7 +1073,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7 ...<return> to continue without it.}Waiter}{4}
+l.8 ...<return> to continue without it.}Waiter}{4}
                                                   
 ? 
 
@@ -1089,7 +1089,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.7 ...<return> to continue without it.}Waiter}{4}
+l.8 ...<return> to continue without it.}Waiter}{4}
                                                   
 ? 
 
@@ -1105,7 +1105,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.8 ...return> to continue without it.}Actions}{5}
+l.9 ...return> to continue without it.}Actions}{5}
                                                   
 ? 
 
@@ -1121,7 +1121,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.8 ...return> to continue without it.}Actions}{5}
+l.9 ...return> to continue without it.}Actions}{5}
                                                   
 ? 
 )
@@ -1137,7 +1137,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​
+l.93 Oolong​
                ​is​ ​an​ ​area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1149,7 +1149,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​ ​
+l.93 Oolong​ ​
                   is​ ​an​ ​area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1161,7 +1161,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​ ​is​
+l.93 Oolong​ ​is​
                         ​an​ ​area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1173,7 +1173,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​ ​is​ ​
+l.93 Oolong​ ​is​ ​
                            an​ ​area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1185,7 +1185,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​ ​is​ ​an​
+l.93 Oolong​ ​is​ ​an​
                                  ​area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1197,7 +1197,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 Oolong​ ​is​ ​an​ ​
+l.93 Oolong​ ​is​ ​an​ ​
                                     area-majority​ ​strategy​ ​game�...
 
 ? 
@@ -1209,7 +1209,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...g​ ​is​ ​an​ ​area-majority​
+l.93 ...g​ ​is​ ​an​ ​area-majority​
                                                    ​strategy​ ​game​...
 
 ? 
@@ -1221,7 +1221,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ... ​is​ ​an​ ​area-majority​ ​
+l.93 ... ​is​ ​an​ ​area-majority​ ​
                                                   strategy​ ​game​ ​...
 
 ? 
@@ -1233,7 +1233,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...��an​ ​area-majority​ ​strategy​
+l.93 ...��an​ ​area-majority​ ​strategy​
                                                    ​game​ ​set​ ​i...
 
 ? 
@@ -1245,7 +1245,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...​ ​area-majority​ ​strategy​ ​
+l.93 ...​ ​area-majority​ ​strategy​ ​
                                                   game​ ​set​ ​in​...
 
 ? 
@@ -1257,7 +1257,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...area-majority​ ​strategy​ ​game​
+l.93 ...area-majority​ ​strategy​ ​game​
                                                    ​set​ ​in​ ​a�...
 
 ? 
@@ -1269,7 +1269,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...-majority​ ​strategy​ ​game​ ​
+l.93 ...-majority​ ​strategy​ ​game​ ​
                                                   set​ ​in​ ​a​ �...
 
 ? 
@@ -1281,7 +1281,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...ity​ ​strategy​ ​game​ ​set​
+l.93 ...ity​ ​strategy​ ​game​ ​set​
                                                    ​in​ ​a​ ​Japan...
 
 ? 
@@ -1293,7 +1293,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...�� ​strategy​ ​game​ ​set​ ​
+l.93 ...�� ​strategy​ ​game​ ​set​ ​
                                                   in​ ​a​ ​Japanese�...
 
 ? 
@@ -1305,7 +1305,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...�strategy​ ​game​ ​set​ ​in​
+l.93 ...�strategy​ ​game​ ​set​ ​in​
                                                    ​a​ ​Japanese​ �...
 
 ? 
@@ -1317,7 +1317,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...ategy​ ​game​ ​set​ ​in​ ​
+l.93 ...ategy​ ​game​ ​set​ ​in​ ​
                                                   a​ ​Japanese​ ​tea...
 
 ? 
@@ -1329,7 +1329,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...y​ ​game​ ​set​ ​in​ ​a​
+l.93 ...y​ ​game​ ​set​ ​in​ ​a​
                                                    ​Japanese​ ​tea​ ...
 
 ? 
@@ -1341,7 +1341,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ... ​game​ ​set​ ​in​ ​a​ ​
+l.93 ... ​game​ ​set​ ​in​ ​a​ ​
                                                   Japanese​ ​tea​ ​h...
 
 ? 
@@ -1353,7 +1353,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ... ​set​ ​in​ ​a​ ​Japanese​
+l.93 ... ​set​ ​in​ ​a​ ​Japanese​
                                                    ​tea​ ​house​ ​...
 
 ? 
@@ -1365,7 +1365,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...set​ ​in​ ​a​ ​Japanese​ ​
+l.93 ...set​ ​in​ ​a​ ​Japanese​ ​
                                                   tea​ ​house​ ​wher...
 
 ? 
@@ -1377,7 +1377,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ... ​in​ ​a​ ​Japanese​ ​tea​
+l.93 ... ​in​ ​a​ ​Japanese​ ​tea​
                                                    ​house​ ​where​ �...
 
 ? 
@@ -1389,7 +1389,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...in​ ​a​ ​Japanese​ ​tea​ ​
+l.93 ...in​ ​a​ ​Japanese​ ​tea​ ​
                                                   house​ ​where​ ​th...
 
 ? 
@@ -1401,7 +1401,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...�a​ ​Japanese​ ​tea​ ​house​
+l.93 ...�a​ ​Japanese​ ​tea​ ​house​
                                                    ​where​ ​the​ ​...
 
 ? 
@@ -1413,7 +1413,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...� ​Japanese​ ​tea​ ​house​ ​
+l.93 ...� ​Japanese​ ​tea​ ​house​ ​
                                                   where​ ​the​ ​trad...
 
 ? 
@@ -1425,7 +1425,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...anese​ ​tea​ ​house​ ​where​
+l.93 ...anese​ ​tea​ ​house​ ​where​
                                                    ​the​ ​traditional
 ? 
 
@@ -1436,7 +1436,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...e​ ​tea​ ​house​ ​where​ ​
+l.93 ...e​ ​tea​ ​house​ ​where​ ​
                                                   the​ ​traditional
 ? 
 
@@ -1447,7 +1447,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...��tea​ ​house​ ​where​ ​the​
+l.93 ...��tea​ ​house​ ​where​ ​the​
                                                    ​traditional
 ? 
 
@@ -1458,7 +1458,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.86 ...a​ ​house​ ​where​ ​the​ ​
+l.93 ...a​ ​house​ ​where​ ​the​ ​
                                                   traditional
 ? 
 
@@ -1469,7 +1469,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​
+l.94 Oolong​
                ​Tea​​ ​is​ ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1481,7 +1481,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​
+l.94 Oolong​ ​
                   Tea​​ ​is​ ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1493,7 +1493,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​
+l.94 Oolong​ ​Tea​
                         ​ ​is​ ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1505,7 +1505,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​​
+l.94 Oolong​ ​Tea​​
                             ​is​ ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1517,7 +1517,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​​ ​
+l.94 Oolong​ ​Tea​​ ​
                                is​ ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1529,7 +1529,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​​ ​is​
+l.94 Oolong​ ​Tea​​ ​is​
                                      ​being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1541,7 +1541,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​​ ​is​ ​
+l.94 Oolong​ ​Tea​​ ​is​ ​
                                         being​ ​served.​ ​Each​ �...
 
 ? 
@@ -1553,7 +1553,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 Oolong​ ​Tea​​ ​is​ ​being​
+l.94 Oolong​ ​Tea​​ ​is​ ​being​
                                                  ​served.​ ​Each​ �...
 
 ? 
@@ -1565,7 +1565,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...g​ ​Tea​​ ​is​ ​being​ ​
+l.94 ...g​ ​Tea​​ ​is​ ​being​ ​
                                                   served.​ ​Each​ ​p...
 
 ? 
@@ -1577,7 +1577,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...a​​ ​is​ ​being​ ​served.​
+l.94 ...a​​ ​is​ ​being​ ​served.​
                                                    ​Each​ ​player​ �...
 
 ? 
@@ -1589,7 +1589,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...​ ​is​ ​being​ ​served.​ ​
+l.94 ...​ ​is​ ​being​ ​served.​ ​
                                                   Each​ ​player​ ​re...
 
 ? 
@@ -1601,7 +1601,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...is​ ​being​ ​served.​ ​Each​
+l.94 ...is​ ​being​ ​served.​ ​Each​
                                                    ​player​ ​represent...
 
 ? 
@@ -1613,7 +1613,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...� ​being​ ​served.​ ​Each​ ​
+l.94 ...� ​being​ ​served.​ ​Each​ ​
                                                   player​ ​represents​...
 
 ? 
@@ -1625,7 +1625,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...g​ ​served.​ ​Each​ ​player​
+l.94 ...g​ ​served.​ ​Each​ ​player​
                                                    ​represents​ ​a​ ...
 
 ? 
@@ -1637,7 +1637,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ... ​served.​ ​Each​ ​player​ ​
+l.94 ... ​served.​ ​Each​ ​player​ ​
                                                   represents​ ​a​ ​t...
 
 ? 
@@ -1649,7 +1649,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...� ​Each​ ​player​ ​represents​
+l.94 ...� ​Each​ ​player​ ​represents​
                                                    ​a​ ​tea​ ​manu...
 
 ? 
@@ -1661,7 +1661,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...�Each​ ​player​ ​represents​ ​
+l.94 ...�Each​ ​player​ ​represents​ ​
                                                   a​ ​tea​ ​manufact...
 
 ? 
@@ -1673,7 +1673,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...h​ ​player​ ​represents​ ​a​
+l.94 ...h​ ​player​ ​represents​ ​a​
                                                    ​tea​ ​manufacturer...
 
 ? 
@@ -1685,7 +1685,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ... ​player​ ​represents​ ​a​ ​
+l.94 ... ​player​ ​represents​ ​a​ ​
                                                   tea​ ​manufacturer​ ...
 
 ? 
@@ -1697,7 +1697,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...ayer​ ​represents​ ​a​ ​tea​
+l.94 ...ayer​ ​represents​ ​a​ ​tea​
                                                    ​manufacturer​ ​try...
 
 ? 
@@ -1709,7 +1709,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...​ ​represents​ ​a​ ​tea​ ​
+l.94 ...​ ​represents​ ​a​ ​tea​ ​
                                                   manufacturer​ ​trying�...
 
 ? 
@@ -1721,7 +1721,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...ts​ ​a​ ​tea​ ​manufacturer​
+l.94 ...ts​ ​a​ ​tea​ ​manufacturer​
                                                    ​trying​ ​to​ ​...
 
 ? 
@@ -1733,7 +1733,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...� ​a​ ​tea​ ​manufacturer​ ​
+l.94 ...� ​a​ ​tea​ ​manufacturer​ ​
                                                   trying​ ​to​ ​serv...
 
 ? 
@@ -1745,7 +1745,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ... ​tea​ ​manufacturer​ ​trying​
+l.94 ... ​tea​ ​manufacturer​ ​trying​
                                                    ​to​ ​serve​ ​t...
 
 ? 
@@ -1757,7 +1757,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...tea​ ​manufacturer​ ​trying​ ​
+l.94 ...tea​ ​manufacturer​ ​trying​ ​
                                                   to​ ​serve​ ​the�...
 
 ? 
@@ -1769,7 +1769,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...� ​manufacturer​ ​trying​ ​to​
+l.94 ...� ​manufacturer​ ​trying​ ​to​
                                                    ​serve​ ​the​ ​...
 
 ? 
@@ -1781,7 +1781,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...�manufacturer​ ​trying​ ​to​ ​
+l.94 ...�manufacturer​ ​trying​ ​to​ ​
                                                   serve​ ​the​ ​most
 ? 
 
@@ -1792,7 +1792,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...turer​ ​trying​ ​to​ ​serve​
+l.94 ...turer​ ​trying​ ​to​ ​serve​
                                                    ​the​ ​most
 ? 
 
@@ -1803,7 +1803,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...r​ ​trying​ ​to​ ​serve​ ​
+l.94 ...r​ ​trying​ ​to​ ​serve​ ​
                                                   the​ ​most
 ? 
 
@@ -1814,7 +1814,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...��trying​ ​to​ ​serve​ ​the​
+l.94 ...��trying​ ​to​ ​serve​ ​the​
                                                    ​most
 ? 
 
@@ -1825,7 +1825,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 ...ying​ ​to​ ​serve​ ​the​ ​
+l.94 ...ying​ ​to​ ​serve​ ​the​ ​
                                                   most
 ? 
 
@@ -1836,7 +1836,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​
+l.95 of​
            ​its​ ​brand,​ ​thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1848,7 +1848,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​
+l.95 of​ ​
               its​ ​brand,​ ​thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1860,7 +1860,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​
+l.95 of​ ​its​
                      ​brand,​ ​thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1872,7 +1872,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​ ​
+l.95 of​ ​its​ ​
                         brand,​ ​thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1884,7 +1884,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​ ​brand,​
+l.95 of​ ​its​ ​brand,​
                                   ​thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1896,7 +1896,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​ ​brand,​ ​
+l.95 of​ ​its​ ​brand,​ ​
                                      thus​ ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1908,7 +1908,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​ ​brand,​ ​thus​
+l.95 of​ ​its​ ​brand,​ ​thus​
                                              ​maximizing​ ​profit.​ ...
 
 ? 
@@ -1920,7 +1920,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 of​ ​its​ ​brand,​ ​thus​ ​
+l.95 of​ ​its​ ​brand,​ ​thus​ ​
                                                 maximizing​ ​profit.​ ...
 
 ? 
@@ -1932,7 +1932,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...� ​brand,​ ​thus​ ​maximizing​
+l.95 ...� ​brand,​ ​thus​ ​maximizing​
                                                    ​profit.​ ​Once​ ...
 
 ? 
@@ -1944,7 +1944,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...�brand,​ ​thus​ ​maximizing​ ​
+l.95 ...�brand,​ ​thus​ ​maximizing​ ​
                                                   profit.​ ​Once​ ​a...
 
 ? 
@@ -1956,7 +1956,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​thus​ ​maximizing​ ​profit.​
+l.95 ... ​thus​ ​maximizing​ ​profit.​
                                                    ​Once​ ​a​ ​pla...
 
 ? 
@@ -1968,7 +1968,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...thus​ ​maximizing​ ​profit.​ ​
+l.95 ...thus​ ​maximizing​ ​profit.​ ​
                                                   Once​ ​a​ ​player�...
 
 ? 
@@ -1980,7 +1980,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​maximizing​ ​profit.​ ​Once​
+l.95 ... ​maximizing​ ​profit.​ ​Once​
                                                    ​a​ ​player​ ​h...
 
 ? 
@@ -1992,7 +1992,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...maximizing​ ​profit.​ ​Once​ ​
+l.95 ...maximizing​ ​profit.​ ​Once​ ​
                                                   a​ ​player​ ​has�...
 
 ? 
@@ -2004,7 +2004,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...mizing​ ​profit.​ ​Once​ ​a​
+l.95 ...mizing​ ​profit.​ ​Once​ ​a​
                                                    ​player​ ​has​ �...
 
 ? 
@@ -2016,7 +2016,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...ng​ ​profit.​ ​Once​ ​a​ ​
+l.95 ...ng​ ​profit.​ ​Once​ ​a​ ​
                                                   player​ ​has​ ​ser...
 
 ? 
@@ -2028,7 +2028,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...profit.​ ​Once​ ​a​ ​player​
+l.95 ...profit.​ ​Once​ ​a​ ​player​
                                                    ​has​ ​served​ �...
 
 ? 
@@ -2040,7 +2040,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...it.​ ​Once​ ​a​ ​player​ ​
+l.95 ...it.​ ​Once​ ​a​ ​player​ ​
                                                   has​ ​served​ ​5�...
 
 ? 
@@ -2052,7 +2052,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​Once​ ​a​ ​player​ ​has​
+l.95 ... ​Once​ ​a​ ​player​ ​has​
                                                    ​served​ ​5​ ​p...
 
 ? 
@@ -2064,7 +2064,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...Once​ ​a​ ​player​ ​has​ ​
+l.95 ...Once​ ​a​ ​player​ ​has​ ​
                                                   served​ ​5​ ​peopl...
 
 ? 
@@ -2076,7 +2076,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...��a​ ​player​ ​has​ ​served​
+l.95 ...��a​ ​player​ ​has​ ​served​
                                                    ​5​ ​people​ ​a...
 
 ? 
@@ -2088,7 +2088,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...�� ​player​ ​has​ ​served​ ​
+l.95 ...�� ​player​ ​has​ ​served​ ​
                                                   5​ ​people​ ​at​...
 
 ? 
@@ -2100,7 +2100,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...��player​ ​has​ ​served​ ​5​
+l.95 ...��player​ ​has​ ​served​ ​5​
                                                    ​people​ ​at​ ​...
 
 ? 
@@ -2112,7 +2112,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...ayer​ ​has​ ​served​ ​5​ ​
+l.95 ...ayer​ ​has​ ​served​ ​5​ ​
                                                   people​ ​at​ ​a​...
 
 ? 
@@ -2124,7 +2124,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...��has​ ​served​ ​5​ ​people​
+l.95 ...��has​ ​served​ ​5​ ​people​
                                                    ​at​ ​a​ ​table...
 
 ? 
@@ -2136,7 +2136,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...s​ ​served​ ​5​ ​people​ ​
+l.95 ...s​ ​served​ ​5​ ​people​ ​
                                                   at​ ​a​ ​table​ ...
 
 ? 
@@ -2148,7 +2148,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...​served​ ​5​ ​people​ ​at​
+l.95 ...​served​ ​5​ ​people​ ​at​
                                                    ​a​ ​table​ ​th...
 
 ? 
@@ -2160,7 +2160,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...erved​ ​5​ ​people​ ​at​ ​
+l.95 ...erved​ ​5​ ​people​ ​at​ ​
                                                   a​ ​table​ ​they�...
 
 ? 
@@ -2172,7 +2172,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...d​ ​5​ ​people​ ​at​ ​a​
+l.95 ...d​ ​5​ ​people​ ​at​ ​a​
                                                    ​table​ ​they​ �...
 
 ? 
@@ -2184,7 +2184,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​5​ ​people​ ​at​ ​a​ ​
+l.95 ... ​5​ ​people​ ​at​ ​a​ ​
                                                   table​ ​they​ ​hav...
 
 ? 
@@ -2196,7 +2196,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​people​ ​at​ ​a​ ​table​
+l.95 ... ​people​ ​at​ ​a​ ​table​
                                                    ​they​ ​have​ ​won
 
 ? 
@@ -2208,7 +2208,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...people​ ​at​ ​a​ ​table​ ​
+l.95 ...people​ ​at​ ​a​ ​table​ ​
                                                   they​ ​have​ ​won
 ? 
 
@@ -2219,7 +2219,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...�� ​at​ ​a​ ​table​ ​they​
+l.95 ...�� ​at​ ​a​ ​table​ ​they​
                                                    ​have​ ​won
 ? 
 
@@ -2230,7 +2230,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...��at​ ​a​ ​table​ ​they​ ​
+l.95 ...��at​ ​a​ ​table​ ​they​ ​
                                                   have​ ​won
 ? 
 
@@ -2241,7 +2241,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ... ​a​ ​table​ ​they​ ​have​
+l.95 ... ​a​ ​table​ ​they​ ​have​
                                                    ​won
 ? 
 
@@ -2252,7 +2252,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.88 ...a​ ​table​ ​they​ ​have​ ​
+l.95 ...a​ ​table​ ​they​ ​have​ ​
                                                   won
 ? 
 
@@ -2263,7 +2263,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​
+l.96 the​
             ​favor​ ​of​ ​that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2275,7 +2275,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​
+l.96 the​ ​
                favor​ ​of​ ​that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2287,7 +2287,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​
+l.96 the​ ​favor​
                         ​of​ ​that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2299,7 +2299,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​ ​
+l.96 the​ ​favor​ ​
                            of​ ​that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2311,7 +2311,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​ ​of​
+l.96 the​ ​favor​ ​of​
                                  ​that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2323,7 +2323,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​ ​of​ ​
+l.96 the​ ​favor​ ​of​ ​
                                     that​ ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2335,7 +2335,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​ ​of​ ​that​
+l.96 the​ ​favor​ ​of​ ​that​
                                             ​table.​ ​Then,​ ​afte...
 
 ? 
@@ -2347,7 +2347,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 the​ ​favor​ ​of​ ​that​ ​
+l.96 the​ ​favor​ ​of​ ​that​ ​
                                                table.​ ​Then,​ ​afte...
 
 ? 
@@ -2359,7 +2359,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�favor​ ​of​ ​that​ ​table.​
+l.96 ...�favor​ ​of​ ​that​ ​table.​
                                                    ​Then,​ ​after​ �...
 
 ? 
@@ -2371,7 +2371,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...or​ ​of​ ​that​ ​table.​ ​
+l.96 ...or​ ​of​ ​that​ ​table.​ ​
                                                   Then,​ ​after​ ​a�...
 
 ? 
@@ -2383,7 +2383,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�of​ ​that​ ​table.​ ​Then,​
+l.96 ...�of​ ​that​ ​table.​ ​Then,​
                                                    ​after​ ​a​ ​pl...
 
 ? 
@@ -2395,7 +2395,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�� ​that​ ​table.​ ​Then,​ ​
+l.96 ...�� ​that​ ​table.​ ​Then,​ ​
                                                   after​ ​a​ ​player...
 
 ? 
@@ -2407,7 +2407,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...at​ ​table.​ ​Then,​ ​after​
+l.96 ...at​ ​table.​ ​Then,​ ​after​
                                                    ​a​ ​player​ ​h...
 
 ? 
@@ -2419,7 +2419,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...� ​table.​ ​Then,​ ​after​ ​
+l.96 ...� ​table.​ ​Then,​ ​after​ ​
                                                   a​ ​player​ ​has�...
 
 ? 
@@ -2431,7 +2431,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�table.​ ​Then,​ ​after​ ​a​
+l.96 ...�table.​ ​Then,​ ​after​ ​a​
                                                    ​player​ ​has​ �...
 
 ? 
@@ -2443,7 +2443,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...le.​ ​Then,​ ​after​ ​a​ ​
+l.96 ...le.​ ​Then,​ ​after​ ​a​ ​
                                                   player​ ​has​ ​sat...
 
 ? 
@@ -2455,7 +2455,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�Then,​ ​after​ ​a​ ​player​
+l.96 ...�Then,​ ​after​ ​a​ ​player​
                                                    ​has​ ​satisfied​...
 
 ? 
@@ -2467,7 +2467,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...n,​ ​after​ ​a​ ​player​ ​
+l.96 ...n,​ ​after​ ​a​ ​player​ ​
                                                   has​ ​satisfied​ ​...
 
 ? 
@@ -2479,7 +2479,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​after​ ​a​ ​player​ ​has​
+l.96 ...​after​ ​a​ ​player​ ​has​
                                                    ​satisfied​ ​5​ �...
 
 ? 
@@ -2491,7 +2491,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...fter​ ​a​ ​player​ ​has​ ​
+l.96 ...fter​ ​a​ ​player​ ​has​ ​
                                                   satisfied​ ​5​ ​ta...
 
 ? 
@@ -2503,7 +2503,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​ ​player​ ​has​ ​satisfied​
+l.96 ...​ ​player​ ​has​ ​satisfied​
                                                    ​5​ ​tables​ ​t...
 
 ? 
@@ -2515,7 +2515,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​player​ ​has​ ​satisfied​ ​
+l.96 ...​player​ ​has​ ​satisfied​ ​
                                                   5​ ​tables​ ​they�...
 
 ? 
@@ -2527,7 +2527,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...layer​ ​has​ ​satisfied​ ​5​
+l.96 ...layer​ ​has​ ​satisfied​ ​5​
                                                    ​tables​ ​they​ �...
 
 ? 
@@ -2539,7 +2539,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...r​ ​has​ ​satisfied​ ​5​ ​
+l.96 ...r​ ​has​ ​satisfied​ ​5​ ​
                                                   tables​ ​they​ ​ha...
 
 ? 
@@ -2551,7 +2551,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...as​ ​satisfied​ ​5​ ​tables​
+l.96 ...as​ ​satisfied​ ​5​ ​tables​
                                                    ​they​ ​have​ ​...
 
 ? 
@@ -2563,7 +2563,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...� ​satisfied​ ​5​ ​tables​ ​
+l.96 ...� ​satisfied​ ​5​ ​tables​ ​
                                                   they​ ​have​ ​won�...
 
 ? 
@@ -2575,7 +2575,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...tisfied​ ​5​ ​tables​ ​they​
+l.96 ...tisfied​ ​5​ ​tables​ ​they​
                                                    ​have​ ​won​ ​t...
 
 ? 
@@ -2587,7 +2587,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...ied​ ​5​ ​tables​ ​they​ ​
+l.96 ...ied​ ​5​ ​tables​ ​they​ ​
                                                   have​ ​won​ ​the�...
 
 ? 
@@ -2599,7 +2599,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​5​ ​tables​ ​they​ ​have​
+l.96 ...​5​ ​tables​ ​they​ ​have​
                                                    ​won​ ​the​ ​fa...
 
 ? 
@@ -2611,7 +2611,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​ ​tables​ ​they​ ​have​ ​
+l.96 ...​ ​tables​ ​they​ ​have​ ​
                                                   won​ ​the​ ​favor�...
 
 ? 
@@ -2623,7 +2623,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�tables​ ​they​ ​have​ ​won​
+l.96 ...�tables​ ​they​ ​have​ ​won​
                                                    ​the​ ​favor​ ​...
 
 ? 
@@ -2635,7 +2635,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...les​ ​they​ ​have​ ​won​ ​
+l.96 ...les​ ​they​ ​have​ ​won​ ​
                                                   the​ ​favor​ ​of�...
 
 ? 
@@ -2647,7 +2647,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ... ​they​ ​have​ ​won​ ​the​
+l.96 ... ​they​ ​have​ ​won​ ​the​
                                                    ​favor​ ​of​ ​the
 ? 
 
@@ -2658,7 +2658,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...they​ ​have​ ​won​ ​the​ ​
+l.96 ...they​ ​have​ ​won​ ​the​ ​
                                                   favor​ ​of​ ​the
 ? 
 
@@ -2669,7 +2669,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...​have​ ​won​ ​the​ ​favor​
+l.96 ...​have​ ​won​ ​the​ ​favor​
                                                    ​of​ ​the
 ? 
 
@@ -2680,7 +2680,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...ave​ ​won​ ​the​ ​favor​ ​
+l.96 ...ave​ ​won​ ​the​ ​favor​ ​
                                                   of​ ​the
 ? 
 
@@ -2691,7 +2691,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...� ​won​ ​the​ ​favor​ ​of​
+l.96 ...� ​won​ ​the​ ​favor​ ​of​
                                                    ​the
 ? 
 
@@ -2702,7 +2702,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.89 ...�won​ ​the​ ​favor​ ​of​ ​
+l.96 ...�won​ ​the​ ​favor​ ​of​ ​
                                                   the
 ? 
 
@@ -2713,7 +2713,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​
+l.97 house​
               ​and​ ​therefore​ ​the​ ​game.
 ? 
 
@@ -2724,7 +2724,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​
+l.97 house​ ​
                  and​ ​therefore​ ​the​ ​game.
 ? 
 
@@ -2735,7 +2735,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​and​
+l.97 house​ ​and​
                         ​therefore​ ​the​ ​game.
 ? 
 
@@ -2746,7 +2746,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​and​ ​
+l.97 house​ ​and​ ​
                            therefore​ ​the​ ​game.
 ? 
 
@@ -2757,7 +2757,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​and​ ​therefore​
+l.97 house​ ​and​ ​therefore​
                                         ​the​ ​game.
 ? 
 
@@ -2768,7 +2768,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​and​ ​therefore​ ​
+l.97 house​ ​and​ ​therefore​ ​
                                            the​ ​game.
 ? 
 
@@ -2779,7 +2779,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 house​ ​and​ ​therefore​ ​the​
+l.97 house​ ​and​ ​therefore​ ​the​
                                                   ​game.
 ? 
 
@@ -2790,7 +2790,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 ...�� ​and​ ​therefore​ ​the​ ​
+l.97 ...�� ​and​ ​therefore​ ​the​ ​
                                                   game.
 ? 
 
@@ -2801,7 +2801,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \subsection{Setting​ ​the​ ​Game}
+l.99 \subsection{Setting​ ​the​ ​Game}
                                               
 ? 
 
@@ -2812,7 +2812,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \subsection{Setting​ ​the​ ​Game}
+l.99 \subsection{Setting​ ​the​ ​Game}
                                               
 ? 
 
@@ -2823,7 +2823,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \subsection{Setting​ ​the​ ​Game}
+l.99 \subsection{Setting​ ​the​ ​Game}
                                               
 ? 
 
@@ -2834,7 +2834,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.92 \subsection{Setting​ ​the​ ​Game}
+l.99 \subsection{Setting​ ​the​ ​Game}
                                               
 ? 
 
@@ -2845,8 +2845,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \subsection{Playing​ ​the​ ​Game}
-                                              
+l.105 \subsection{Playing​ ​the​ ​Game}
+                                               
 ? 
 
 ! Package inputenc Error: Unicode char ​ (U+200B)
@@ -2856,8 +2856,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \subsection{Playing​ ​the​ ​Game}
-                                              
+l.105 \subsection{Playing​ ​the​ ​Game}
+                                               
 ? 
 
 ! Package inputenc Error: Unicode char ​ (U+200B)
@@ -2867,8 +2867,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \subsection{Playing​ ​the​ ​Game}
-                                              
+l.105 \subsection{Playing​ ​the​ ​Game}
+                                               
 ? 
 
 ! Package inputenc Error: Unicode char ​ (U+200B)
@@ -2878,8 +2878,8 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.99 \subsection{Playing​ ​the​ ​Game}
-                                              
+l.105 \subsection{Playing​ ​the​ ​Game}
+                                               
 ? 
 
 ! Package inputenc Error: Unicode char ​ (U+200B)
@@ -2889,7 +2889,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.109 \subsection{Serving​ ​Tea}
+l.115 \subsection{Serving​ ​Tea}
                                     
 ? 
 
@@ -2900,7 +2900,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.109 \subsection{Serving​ ​Tea}
+l.115 \subsection{Serving​ ​Tea}
                                     
 ? 
 
@@ -2911,7 +2911,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \subsection{The​ ​Waiter}
+l.121 \subsection{The​ ​Waiter}
                                    
 ? 
 
@@ -2922,7 +2922,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \subsection{The​ ​Waiter}
+l.121 \subsection{The​ ​Waiter}
                                    
 ? 
 [4]
@@ -2934,7 +2934,7 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127 \subsection{Special​ ​Actions}
+l.132 \subsection{Special​ ​Actions}
                                         
 ? 
 
@@ -2945,18 +2945,18 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.127 \subsection{Special​ ​Actions}
+l.132 \subsection{Special​ ​Actions}
                                         
 ? 
 <specials.png, id=23, 703.87968pt x 618.81187pt>
 File: specials.png Graphic file (type png)
 <use specials.png>
-Package pdftex.def Info: specials.png  used on input line 139. on input line 13
-9.
+Package pdftex.def Info: specials.png  used on input line 144. on input line 14
+4.
 Package pdftex.def Info: Requested size: 386.96024pt x 340.18706pt on input lin
-e 139.
+e 144.
 
-Overfull \hbox (41.96024pt too wide) in paragraph at lines 138--142
+Overfull \hbox (41.96024pt too wide) in paragraph at lines 143--147
  [][] 
  []
 
@@ -2964,16 +2964,16 @@ Overfull \hbox (41.96024pt too wide) in paragraph at lines 138--142
 <gameboard.png, id=30, 200.75pt x 204.765pt>
 File: gameboard.png Graphic file (type png)
 <use gameboard.png>
-Package pdftex.def Info: gameboard.png  used on input line 175. on input line 1
-75.
+Package pdftex.def Info: gameboard.png  used on input line 180. on input line 1
+80.
 Package pdftex.def Info: Requested size: 113.81102pt x 116.08923pt on input lin
-e 175.
+e 180.
 \openout3 = `template.pyg'.
 
 
 (./_minted-template/default-pyg-prefix.pygstyle)
 (./_minted-template/default.pygstyle)
-(./_minted-template/8E809B928850184B62B82802278C0B793293FD1385702DED07C95CA82EC
+(./_minted-template/5223EF1774EDC579C2D75437DCF806073293FD1385702DED07C95CA82EC
 592C5.pygtex) [7 <./gameboard.png>]
 \openout3 = `template.pyg'.
 
@@ -2983,17 +2983,18 @@ e 175.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 3.
 )
-<game.png, id=38, 557.83406pt x 459.96844pt>
+<game.png, id=38, 602.25pt x 470.75874pt>
 File: game.png Graphic file (type png)
 <use game.png>
-Package pdftex.def Info: game.png  used on input line 253. on input line 253.
-Package pdftex.def Info: Requested size: 182.09485pt x 150.1477pt on input line
- 253.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 263.
+Package pdftex.def Info: game.png  used on input line 262. on input line 262.
+Package pdftex.def Info: Requested size: 182.09485pt x 142.33492pt on input lin
+e 262.
+ [8 <./game.png>]
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 272.
 
  (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [8 <./game.png (PNG copy)>]
+)
 \openout3 = `template.pyg'.
 
 
@@ -3012,83 +3013,79 @@ File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 \openout3 = `template.pyg'.
 
 
-(./_minted-template/E3DCE780FBA3B7181F0EEB0C0D7FE34B3293FD1385702DED07C95CA82EC
+(./_minted-template/2565793DCA12286E2710A3854ACAA6743293FD1385702DED07C95CA82EC
 592C5.pygtex)
 \openout3 = `template.pyg'.
 
 
-(./_minted-template/9EFD7CA13623E22F18A0E41EB05E08833293FD1385702DED07C95CA82EC
-592C5.pygtex)
-\openout3 = `template.pyg'.
-
-
-(./_minted-template/FB3597D9F3316E18AB12147BBA62A8CE3293FD1385702DED07C95CA82EC
+(./_minted-template/A7FC150A48EB26110DFA87FAA5C7C3C43293FD1385702DED07C95CA82EC
 592C5.pygtex) [10]
 \openout3 = `template.pyg'.
 
 
-(./_minted-template/10FDFD09A1B1370C1692657FA9C8B3B23293FD1385702DED07C95CA82EC
+(./_minted-template/50F6268A1E56620343C3DFA7D74CFFEC3293FD1385702DED07C95CA82EC
 592C5.pygtex)
 \openout3 = `template.pyg'.
 
 
-(./_minted-template/BDEA1EE99A52B7DA0EBA77ABB341370D3293FD1385702DED07C95CA82EC
+(./_minted-template/D19D6031D712999372848669027D7F013293FD1385702DED07C95CA82EC
 592C5.pygtex)
-<menu_inicial.png, id=49, 318.43968pt x 222.07968pt>
+\openout3 = `template.pyg'.
+
+
+(./_minted-template/625A148ED44661EA7716D9AD1DB066083293FD1385702DED07C95CA82EC
+592C5.pygtex) [11]
+<menu_inicial.png, id=53, 367.3725pt x 256.96pt>
 File: menu_inicial.png Graphic file (type png)
 <use menu_inicial.png>
-Package pdftex.def Info: menu_inicial.png  used on input line 457. on input lin
-e 457.
-Package pdftex.def Info: Requested size: 104.7042pt x 73.01881pt on input line 
-457.
+Package pdftex.def Info: menu_inicial.png  used on input line 468. on input lin
+e 468.
+Package pdftex.def Info: Requested size: 104.7042pt x 73.23436pt on input line 
+468.
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
 
  []
 
-<menu_info.png, id=50, 474.27188pt x 569.12625pt>
+<menu_info.png, id=54, 516.93124pt x 602.25pt>
 File: menu_info.png Graphic file (type png)
 <use menu_info.png>
-Package pdftex.def Info: menu_info.png  used on input line 461. on input line 4
-61.
-Package pdftex.def Info: Requested size: 104.7042pt x 125.64236pt on input line
- 461.
+Package pdftex.def Info: menu_info.png  used on input line 472. on input line 4
+72.
+Package pdftex.def Info: Requested size: 104.7042pt x 121.98251pt on input line
+ 472.
 
-Underfull \hbox (badness 10000) in paragraph at lines 461--462
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 
  []
 
-<menu_play.png, id=51, 322.20375pt x 224.33812pt>
+<menu_play.png, id=55, 363.3575pt x 243.91125pt>
 File: menu_play.png Graphic file (type png)
 <use menu_play.png>
-Package pdftex.def Info: menu_play.png  used on input line 465. on input line 4
-65.
-Package pdftex.def Info: Requested size: 104.7042pt x 72.90218pt on input line 
-465.
+Package pdftex.def Info: menu_play.png  used on input line 476. on input line 4
+76.
+Package pdftex.def Info: Requested size: 104.7042pt x 70.2821pt on input line 4
+76.
 
-Underfull \hbox (badness 10000) in paragraph at lines 465--466
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
 
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 466--466
+Underfull \hbox (badness 1205) in paragraph at lines 477--477
 []\OT1/cmr/m/n/10 Figure 6: |Game Op-
  []
 
-[11] [12 <./menu_inicial.png (PNG copy)> <./menu_info.png (PNG copy)> <./menu_p
-lay.png (PNG copy)>]
-No file template.bbl.
-[13
-
-] (./template.aux)
+[12 <./menu_inicial.png> <./menu_info.png> <./menu_play.png>] [13]
+(./template.aux)
 runsystem(rm template.pyg)...executed.
 
  ) 
 Here is how much of TeX's memory you used:
- 9211 strings out of 492985
- 151526 string characters out of 6138637
- 275004 words of memory out of 5000000
- 12579 multiletter control sequences out of 15000+600000
+ 9209 strings out of 492985
+ 151514 string characters out of 6138637
+ 275005 words of memory out of 5000000
+ 12578 multiletter control sequences out of 15000+600000
  9518 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,8n,40p,1515b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3100,9 +3097,9 @@ c/amsfonts/cm/cmitt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
 r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/cm-super/sfrm1000.pfb>
-Output written on template.pdf (13 pages, 590745 bytes).
+Output written on template.pdf (13 pages, 559226 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
+ 94 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
