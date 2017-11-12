@@ -173,12 +173,19 @@ play :-
 	startMenu.
 
 %============================Counting Tables ================================
-xPiece('X',1).	oPiece('X', 0).
-xPiece('%',1).	oPiece('%', 0).
-xPiece('O',0).	oPiece('O', 1).
-xPiece('@',0).	oPiece('@', 1).
-xPiece('W',0).	oPiece('W', 0).
-xPiece('.',0).	oPiece('.', 0).
+xPiece('X',1).
+xPiece('%',1).
+xPiece('O',0).
+xPiece('@',0).
+xPiece('W',0).
+xPiece('.',0).
+
+oPiece('X', 0).
+oPiece('%', 0).
+oPiece('O', 1).
+oPiece('@', 1).
+oPiece('W', 0).
+oPiece('.', 0).
 
 countTableTokens(_, _, 9, PreviousTotal, NewTotal) :-
 	NewTotal = PreviousTotal.
