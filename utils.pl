@@ -1,27 +1,36 @@
 :-use_module(library(clpfd)).
+:-use_module(library(lists)).
 
 
-/**
- * @brief Generates a list capable of being passed as an argument to global_cardinality
- * @param SetNumbers The received set numbers from the user
- * @param StartNumber The number of -1 to put on the end list (corresponds to the number of subdivisions of the list)
- * 				Can be easily calculated according to the list length of the columns and row restrictions
- */
-generateCardinality(SetNumbers, [ResHead | ResTail]) :-
-	ResHead = -1-_,
-	generateCardinality(SetNumbers, ResTail, []).
 
-generateCardinality([], [], _).
-generateCardinality([SetNumbersHead|SetNumbersTail], [ResHead|ResTail], Parsed) :-
+generateCardinality(SetNumbers, RestNumber, MaxSize, [ResultHead | ResultTail], [LabelHead | LabelTail]) :-
+	addWallsCardinality(RestNumber, MaxSize, ResultHead, LabelHead),
+	addNumbersCardinality(SetNumbers, ResultTail, LabelTail, []).
+
+addWallsCardinality(0, MaxSize, Restriction, Label) :-
+	Range in 0..MaxSize,
+	Label #= Range,
+	Restriction = -1-Range.
+addWallsCardinality(RestNumber, MaxSize, Restriction, Label) :-
+	RestNumber \= 0,
+	Minimum is RestNumber - 1,
+	Maximum is MaxSize - Minimum - 1,
+	Range in Minimum..Maximum,
+	Label #= Range,
+	Restriction = -1-Range.
+
+addNumbersCardinality([], [], [], _).
+addNumbersCardinality([SetNumbersHead|SetNumbersTail], [ResHead|ResTail], [LabelHead | LabelTail], Parsed) :-
 	\+ member(SetNumbersHead, Parsed),
 	count([SetNumbersHead|SetNumbersTail], SetNumbersHead, Maximum),
 	Occurrences in 0..Maximum,
 	ResHead = SetNumbersHead-Occurrences,
+	LabelHead #= Occurrences,
 	append([SetNumbersHead], Parsed, NewParsed),
-	generateCardinality(SetNumbersTail, ResTail, NewParsed).
-generateCardinality([SetNumbersHead|SetNumbersTail], Res, Parsed) :-
+	addNumbersCardinality(SetNumbersTail, ResTail, LabelTail, NewParsed).
+addNumbersCardinality([SetNumbersHead|SetNumbersTail], Res, Label, Parsed) :-
 	member(SetNumbersHead, Parsed),
-	generateCardinality(SetNumbersTail, Res, Parsed).
+	addNumbersCardinality(SetNumbersTail, Res, Label, Parsed).
 
 %Counts the number of occurrences of Token in List
 count([], _, 0).
@@ -43,14 +52,17 @@ nthElement([], Index, _) :-
 	Index > 0,
 	write('Error nthElement(), accessing '), write(Index), write('element out of bounds!\n'),
 	fail.
-nthElement([Element | _], 0, Element).
+nthElement([Head | _], 0, Element) :-
+	Element = Head.
 nthElement([_ | ListTail], Index, Element) :-
+	Index >= 0,
 	Dec is Index - 1,
 	nthElement(ListTail, Dec, Element).
 
+
 nthColumn([], _, []).
 nthColumn([Row | Remainder], Index, [ResHead | ResTail]) :-
-	nthElement(Row, Index, ResHead),
+	nth0(Index, Row, ResHead),
 	nthColumn(Remainder, Index, ResTail).
 
 sumElems([], 0).
