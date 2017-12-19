@@ -56,22 +56,24 @@ addColsRest(Board, Index, End, [ColRest | RestRemainder], SetNumbers) :-
 addListRest([], _).
 addListRest(SetRest, SumRest, List) :-
 	write('Cardinality = '), write(SetRest), nl,nl,
-	global_cardinality(List, SetRest).
-	/*
-	write('After global_cardinality\n'),
-	firstNotOf(List, -1, StartOfList),
-	write('After firstNotOf\n'),
-	splitList(StartOfList, -1, Result),
-	addSumRest(SumRest, Result).
-	*/
+	global_cardinality(List, SetRest),
+	addSumRest(SumRest, List).
 
 %Adds the restriction that list ListHead sum must be equal to RestHead
-addSumRest([], []).
-addSumRest([], [ListHead | ListTail]).
-addSumRest([RestHead | RestTail], [ListHead | ListTail]) :-
-	sumElems(ListHead, Total),
-	Total #= RestHead,
-	% sum(ListHead, #=, RestHead),
-	write('Sum successful\n'),
-	write('addSumRest('), write(RestTail), write(', '), write(ListTail), write(') \n'),
-	addSumRest(RestTail, ListTail).
+addSumRest([], _).
+addSumRest(Restrictions, List) :-
+	write('addSumRest('), write(Restrictions), write(', '), write(List), write(') \n'),
+	firstNotOf(List, -1, NewList),
+	addSumRest(Restrictions, NewList, 0, -1).
+
+
+addSumRest([], [], _, _).
+addSumRest(_, [], _, _).
+addSumRest([RestHead|RestTail], [Splitter|ListTail], Total, Splitter) :-
+	RestHead #= Total,
+	firstNotOf(ListTail, Splitter, NewListTail),
+	addSumRest(RestTail, NewListTail, 0, Splitter).
+
+addSumRest(Restrictions, [ListHead|ListTail], Total, Splitter) :-
+	Inc #= Total + ListHead,
+	addSumRest(Restrictions, ListTail, Inc, Splitter).
