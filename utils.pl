@@ -14,7 +14,8 @@ generateCardinality(SetNumbers, [ResHead | ResTail]) :-
 generateCardinality([], [], _).
 generateCardinality([SetNumbersHead|SetNumbersTail], [ResHead|ResTail], Parsed) :-
 	\+ member(SetNumbersHead, Parsed),
-	count([SetNumbersHead|SetNumbersTail], SetNumbersHead, Occurrences),
+	count([SetNumbersHead|SetNumbersTail], SetNumbersHead, Maximum),
+	Occurrences in 0..Maximum,
 	ResHead = SetNumbersHead-Occurrences,
 	append([SetNumbersHead], Parsed, NewParsed),
 	generateCardinality(SetNumbersTail, ResTail, NewParsed).
@@ -31,17 +32,6 @@ count([ListHead | ListTail], Token, Result) :-
 	ListHead \= Token,
 	count(ListTail, Token, Total),
 	Result = Total.
-
-%Splits a list using Splitter as the delimiting character.
-splitList([-1|[]], _, [[] | []]).
-splitList([], _, [[] | []]).
-splitList([ListHead | ListTail], Splitter, [[HeadHead | HeadTail] | Tail]) :-
-	ListHead #\= Splitter,
-	HeadHead #= ListHead,
-	splitList(ListTail, Splitter, [HeadTail | Tail]).
-splitList([Splitter | ListTail], Splitter, [Head|Tail]) :-
-	Head = [],
-	splitList(RestOfList, Splitter, Tail).
 
 firstNotOf([ListHead | ListTail], Elem, Result) :-
 	ListHead #\= Elem,
