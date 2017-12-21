@@ -4,6 +4,7 @@
 printLine(ColNumber, ColNumber) :-
 	write('--') , nl.
 printLine(ColNumber, Start) :-
+	Start < ColNumber,
 	write('-----'),
 	Inc is Start + 1,
 	printLine(ColNumber, Inc).
@@ -92,6 +93,7 @@ space(Num) :-
 
 space(Num, Num).
 space(Curr, Num) :-
+	Curr < Num,
 	write(' '),
 	NewCurr is Curr + 1,
 	space(NewCurr, Num).
