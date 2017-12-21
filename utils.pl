@@ -7,14 +7,14 @@ generateCardinality(SetNumbers, RestNumber, MaxSize, [ResultHead | ResultTail], 
 	addWallsCardinality(RestNumber, MaxSize, ResultHead, LabelHead),
 	addNumbersCardinality(SetNumbers, ResultTail, LabelTail, []).
 
-addWallsCardinality(0, MaxSize, Restriction, Label) :-
+addWallsCardinality(0, MaxSize, Restriction, Label) :- % When there is no restriction in the sums
 	Range in 0..MaxSize,
 	Label #= Range,
 	Restriction = -1-Range.
-addWallsCardinality(RestNumber, MaxSize, Restriction, Label) :-
+addWallsCardinality(RestNumber, MaxSize, Restriction, Label) :- % When there are sum restrictions
 	RestNumber \= 0,
 	Minimum is RestNumber - 1,
-	Maximum is MaxSize - Minimum - 1,
+	Maximum is MaxSize - RestNumber,
 	Range in Minimum..Maximum,
 	Label #= Range,
 	Restriction = -1-Range.
@@ -42,10 +42,12 @@ count([ListHead | ListTail], Token, Result) :-
 	count(ListTail, Token, Total),
 	Result = Total.
 
+firstNotOf([], _, []).
 firstNotOf([ListHead | ListTail], Elem, Result) :-
 	ListHead #\= Elem,
 	Result = [ListHead|ListTail].
-firstNotOf([Elem | ListTail], Elem, Result) :-
+firstNotOf([ListHead | ListTail], Elem, Result) :-
+	ListHead #= Elem,
 	firstNotOf(ListTail, Elem, Result).
 
 nthElement([], Index, _) :-
@@ -69,8 +71,3 @@ sumElems([], 0).
 sumElems([ListHead|ListTail], Total) :-
 	sumElems(ListTail, Rest),
 	Total #= (ListHead + Rest).
-
-labelAll([]).
-labelAll([ListHead|ListTail]) :-
-	labeling([], ListHead),
-	labelAll(ListTail).
