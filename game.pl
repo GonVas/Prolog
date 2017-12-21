@@ -1,4 +1,5 @@
 :-include('utils.pl').
+:-include('io.pl').
 :-use_module(library(clpfd)).
 /*
 	start([1,1,3], [[4], [1,4], [2], [4]], [[], [3,1], [5], [4]], Result).
@@ -24,7 +25,8 @@ start(SetNumbers, ColRestrictions, RowRestrictions, Result) :-
 	addRowsRest(Result, RowRestrictions, SetNumbers, CardinalityLabel1),
 	addColsRest(Result, 0, ColNum, ColRestrictions, SetNumbers, CardinalityLabel2),
 	append(CardinalityLabel1, CardinalityLabel2, CardinalityLabel),
-	labelAll(Result, CardinalityLabel, []).
+	labelAll(Result, CardinalityLabel, []),
+	printGame(Result, ColRestrictions, RowRestrictions, ColNum, RowNum).
 
 
 %Adds the necessary restrictions to the rows
