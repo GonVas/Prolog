@@ -4,15 +4,6 @@
 	start([1,1,3], [[4], [1,4], [2], [4]], [[], [3,1], [5], [4]], Result).
 */
 
-printAll :-
-	findall(Result, start([1,1,3], [[4], [1,4], [2], [4]], [[], [3,1], [5], [4]], Result), List),
-	printAll(List).
-
-printAll([]).
-printAll([Head|Tail]) :-
-	write(Head), nl,
-	printAll(Tail).
-
 %Instantiates the board with the given number of columns and rows
 startBoard(_, 0, []).
 startBoard(ColNum, RowNum, [RowsHead|RowsTail]) :-
@@ -85,18 +76,6 @@ addSumRest(Restrictions, [ListHead | ListTail], Total, Splitter) :-
 	Restrictions \= [],
 	Inc #= Total + ListHead,
 	addSumRest(Restrictions, ListTail, Inc, Splitter).
-
-% % If it gets here the next elements should all be the Splitter
-% addSumRest([], List, _, Splitter) :-
-% 	write('I got here\n'),
-% 	fillWithSplitter(List, Splitter).
-%
-%
-% fillWithSplitter([], _).
-% fillWithSplitter([ListHead | ListTail], Splitter) :-
-% 	ListHead #= Splitter,
-% 	fillWithSplitter(ListTail, Splitter).
-
 
 
 % Label the Result

@@ -1,8 +1,6 @@
 :-use_module(library(clpfd)).
 :-use_module(library(lists)).
 
-
-
 generateCardinality(SetNumbers, RestNumber, MaxSize, [ResultHead | ResultTail], [LabelHead | LabelTail]) :-
 	addWallsCardinality(RestNumber, MaxSize, ResultHead, LabelHead),
 	addNumbersCardinality(SetNumbers, ResultTail, LabelTail, []).
@@ -66,8 +64,3 @@ nthColumn([], _, []).
 nthColumn([Row | Remainder], Index, [ResHead | ResTail]) :-
 	nth0(Index, Row, ResHead),
 	nthColumn(Remainder, Index, ResTail).
-
-sumElems([], 0).
-sumElems([ListHead|ListTail], Total) :-
-	sumElems(ListTail, Rest),
-	Total #= (ListHead + Rest).
