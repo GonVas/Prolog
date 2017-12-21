@@ -70,38 +70,43 @@ addSumRest(Restrictions, List) :-
 	firstNotOf(List, -1, NewList),  % In case list starts in -1
 	addSumRest(Restrictions, NewList, 0, -1).
 
-% When restrictions are over and list is over
-addSumRest([], [], _, _).
 
-% When the list ends case 1
-addSumRest([RestHead | []], [], Total, _) :-
-	RestHead #= Total,
-	write('List Ended case 1, tot = '), write(Total), nl.
+addSumRest([], [], _, _). 	% When restrictions are over and list is over
+addSumRest([Total | []], [], Total, _). 	% When the list ends case 1
 
-% When the list ends case 2
-addSumRest([RestHead | []], [Splitter | []], Total, Splitter) :-
-	RestHead #= Total,
-	write('List Ended case 2, tot = '), write(Total), nl.
-
-addSumRest([Total | RestTail], [Splitter | ListTail], Total, Splitter) :- %When a splitter is found in the list check its current sum
-	write('Total '), write(Total), nl,
+%When a splitter is found in the list check its current sum
+addSumRest([Total | RestTail], [Splitter | ListTail], Total, Splitter) :-
 	firstNotOf(ListTail, Splitter, NewListTail),
 	addSumRest(RestTail, NewListTail, 0, Splitter).
 
-addSumRest(Restrictions, [ListHead | ListTail], Total, Splitter) :- % While no splitter is found within the list
+% While no splitter is found within the list
+addSumRest(Restrictions, [ListHead | ListTail], Total, Splitter) :-
+	ListHead #\= Splitter,
+	Restrictions \= [],
 	Inc #= Total + ListHead,
 	addSumRest(Restrictions, ListTail, Inc, Splitter).
 
+% % If it gets here the next elements should all be the Splitter
+% addSumRest([], List, _, Splitter) :-
+% 	write('I got here\n'),
+% 	fillWithSplitter(List, Splitter).
+%
+%
+% fillWithSplitter([], _).
+% fillWithSplitter([ListHead | ListTail], Splitter) :-
+% 	ListHead #= Splitter,
+% 	fillWithSplitter(ListTail, Splitter).
 
 
-% Add SumLabel to the label list
+
+% Label the Result
 labelAll([], [], Result) :-
-	labeling([], NewResult).
+	labeling([], Result).
 
 % Add Cardinality Occurrences to the label list
 labelAll([], [CardHead|CardTail], Result) :-
-	append(Result, CardHead, NewResult).
-	% labelAll([], CardTail, SumLabel, NewResult).
+	append(Result, CardHead, NewResult),
+	labelAll([], CardTail, NewResult).
 
 % Add board variables to the label list
 labelAll([ListHead|ListTail], Cardinality, Result) :-
