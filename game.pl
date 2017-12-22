@@ -21,6 +21,7 @@ start(SetNumbers, ColRestrictions, RowRestrictions, Result) :-
 	length(ColRestrictions, ColNum),
 	length(RowRestrictions, RowNum),
 	startBoard(ColNum, RowNum, Result), !,
+	reset_timer,
 	addRowsRest(Result, RowRestrictions, SetNumbers, CardinalityLabel1),
 	addColsRest(Result, 0, ColNum, ColRestrictions, SetNumbers, CardinalityLabel2),
 	append(CardinalityLabel1, CardinalityLabel2, CardinalityLabel),
@@ -88,7 +89,7 @@ print_time :-
 
 % Label the Result
 labelAll([], [], Result) :-
-	reset_timer,
+
 	labeling([], Result),
 	print_time,
 	fd_statistics.
@@ -135,6 +136,9 @@ generateInsideRest(SetNumbers, Size, Rest):-
 	maplist(random(Min, MaxRandom), Rest).
 
 %generate_puzzle([1,2,3,4,5], 4, Result).
+%generate_puzzle([1,2,3,4,5], 5, Result).
+%generate_puzzle([1,2,3,4,5], 6, Result).
+%generate_puzzle([1,2,3,4,5], 7, Result).
 
 /*
 
@@ -150,6 +154,25 @@ start( [0,1,2,3], [[6], [0,3], [3], [4,2]], [[3,1], [1,5], [2,1], [5]], Result).
 1 5	1 # 2 3
 2 1 2 # 1 #
   5 # 3 0 2
+
+
+
+(5x5)
+
+      3    2
+      8    5    3         7
+      ----------------------
+ 5  5 | 5 | # | 3 | 2 | # |
+      ----------------------
+ 1    | 1 | # | # | # | # |
+      ----------------------
+ 7  7 | 2 | 5 | # | 3 | 4 |
+      ----------------------
+      | # | # | # | # | 3 |
+      ----------------------
+      | 3 | 2 | # | # | # |
+
+
 
 
 (6x6)
