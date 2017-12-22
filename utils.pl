@@ -64,3 +64,21 @@ nthColumn([], _, []).
 nthColumn([Row | Remainder], Index, [ResHead | ResTail]) :-
 	nth0(Index, Row, ResHead),
 	nthColumn(Remainder, Index, ResTail).
+
+
+list_min([L|Ls], Min) :-
+    list_min(Ls, L, Min).
+
+list_min([], Min, Min).
+list_min([L|Ls], Min0, Min) :-
+    Min1 is min(L, Min0),
+    list_min(Ls, Min1, Min).
+
+
+list_max([L|Ls], Max) :-
+    list_max(Ls, L, Max).
+
+list_max([], Max, Max).
+list_max([L|Ls], Max0, Max) :-
+    Max1 is max(L, Max0),
+    list_max(Ls, Max1, Max).
