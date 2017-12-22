@@ -1,9 +1,6 @@
 :-include('utils.pl').
 :-include('io.pl').
 :-use_module(library(clpfd)).
-/*
-	start([1,1,3], [[4], [1,4], [2], [4]], [[], [3,1], [5], [4]], Result).
-*/
 
 %Instantiates the board with the given number of columns and rows
 startBoard(_, 0, []).
@@ -93,6 +90,3 @@ labelAll([], [CardHead|CardTail], Result) :-
 labelAll([ListHead|ListTail], Cardinality, Result) :-
 	append(Result, ListHead, NewResult),
 	labelAll(ListTail, Cardinality, NewResult).
-
-
-% start([1,1,3], [[4], [1,4], [2], [4]], [[], [3,1], [5], [4]], Result).
