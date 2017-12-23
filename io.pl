@@ -66,10 +66,11 @@ printColRestNum([RestHead | RestTail], Curr, MaxRestNum) :-
 	space(5),
 	printColRestNum(RestTail, Curr, MaxRestNum).
 printColRestNum([RestHead | RestTail], Curr, MaxRestNum) :-
-	Index is MaxRestNum - Curr,
+	Size is MaxRestNum - Curr,
 	length(RestHead, HeadLen),
-	HeadLen >= Index,
-	nth1(Index, RestHead, Num),
+	HeadLen >= Size,
+	Index is HeadLen - Size,
+	nth0(Index, RestHead, Num),
 	space(2), write(Num), space(2),
 	printColRestNum(RestTail, Curr, MaxRestNum).
 
